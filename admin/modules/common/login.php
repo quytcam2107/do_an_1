@@ -2,8 +2,23 @@
 	$user = $pass = "";
 	if(isset($_POST['btn'])){
 		$user = $_POST['user_admin'];
-		$pass = $_POST['pass'];
-		
+		$pass = md5($_POST['pass']);
+
+		$sql = "SELECT id,name FROM admin WHERE users = '$user' AND pass = '$pass'";
+		$result = mysqli_query($conn,$sql);
+		if($result == false){
+			$error = "Lỗi ".mysqli_error($conn);
+		}else{
+			if(mysqli_num_rows($result) == 1){
+				$row = mysqli_fetch_assoc($result);
+				$_SESSION['user']['id'] = $row['id'];
+				$_SESSION['user']['name'] = $row['name'];
+				header("location:index.php?module=products&action=list");
+			}
+			else{
+				$error = "Tài khoản hoặc mật khẩu không chính xác";
+			}
+		}
 	}
  ?>
 <!DOCTYPE html>
@@ -11,7 +26,6 @@
 <head>
 	<title>Đăng nhập Admin</title>
 	<meta charset="utf-8">
-	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 	<style type="text/css">
 		body{
 			 background-color: #F49999; /* For browsers that do not support gradients */
@@ -28,6 +42,7 @@
 			left: 550px;
 			border-radius: 5px;
 			font-family: Cambria;
+			 box-shadow: -15px 5px 12px #867C7C;
 		}
 		table{
 			width: 100%;
@@ -71,6 +86,7 @@
 			margin-left: 45px;
 		}
 		.td_left{
+			width: 100px;
 			border-right: 2px double red;
 		}
 		input{
@@ -101,14 +117,14 @@
 			<div class="div_small">
 				<table>
 					<form method="POST">
-				<tr>
+				<tr>		
 					<th class="td_left"><i class="fas fa-cloud"></i>User :</th>
 					<td>
 						<input type="text" name="user_admin" placeholder="Hãy nhập User" required size="30">
 					</td><br>
 				</tr>
 				<tr>
-					<th class="td_left">Pass :</th>
+					<th class="td_left"><i class="fas fa-cloud"></i>Pass :</th>
 
 					<td>
 						<input type="password" name="pass" placeholder="Hãy Nhập Password" size="30">
