@@ -73,7 +73,7 @@
 		}
 		.div-menu li{
 			height: 10vh;
-			border-bottom: 3px double #DBB5B5;
+			border-top: 1px solid #DBB5B5;
 			font-size: 15px;
 			border-radius: 10px 10px;
 		}
@@ -109,6 +109,14 @@
 			color: red;
 			font-weight: bolder;
 		}
+		.active{
+			background: #1BB6B8;
+			font-weight: bolder;
+			border-bottom: 4px solid #DBB5B5;
+			
+			font-size: 12px;
+			color:  #0822E8;
+		}
 	</style>
 </head>
 <body>
@@ -131,16 +139,16 @@
 	</div>
 	<div class="div-menu">
 		<ul>
-			<li>
+			<li class="<?php if($module == "products") echo "active"; ?>">
 				<i class='fas fa-tasks' style='font-size:25px'></i><a href="index.php?module=products&action=list">Quản Lý Sản Phẩm</a>
 			</li>
-			<li>
+			<li class="<?php if($module == "invoice") echo "active"; ?>">
 				<i class='fas fa-file-invoice-dollar' style='font-size:25px'></i><a href="index.php?module=invoice&action=list">Quản Lý Hoá Đơn</a>
 			</li> 
-			<li>
+			<li class="<?php if($module == "trademark") echo "active"; ?>">
 				<i class='fas fa-award' style='font-size:25px'></i>	<a href="index.php?module=trademark&action=list">Quản Lý Thương Hiệu</a>
 			</li>
-			<li>
+			<li class="<?php if($module == "type") echo "active"; ?>">
 				<i class='fas fa-clone' style='font-size:25px'></i><a href="index.php?module=type&action=list">Quản Lý Loại</a>
 			</li>
 		</ul>

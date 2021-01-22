@@ -5,6 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<script src="https://kit.fontawesome.com/yourcode.js"></script>
+	<link rel="shortcut icon" type="image/jpg" href="image/logo2.png"/>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
 	<style type="text/css">
@@ -17,13 +18,13 @@
 		}
 		.div_tong{
 			width: 1520px;
-			height: 900px;
+			height: 1100px;
 			background: white;
 
 		}
 		.div_top{
 			width: 100%;
-			height: 7%;
+			height: 63px;
 			/*background: #F58181;*/
 		}
 		/*.div_menu{
@@ -223,7 +224,7 @@
 
 		.div_menu{
 			     width: 100%;
-      		height: 6%;
+      		height: 54px;
       		background: #525252;
           display: flex;
           font-size: 15px;
@@ -486,8 +487,8 @@ background-size: 300px 100px;
 		          </li>
        		 </ul>
 			</li>
-		<li>
-				<a class="the_a" href=""><span class="span_list" style="line-height: 55px;">Phụ Kiện </span><i class="fas fa-caret-down"></i></a>
+		<li class="<?php if($action=="product_accessories") echo "active"?>">
+				<a class="the_a" href="index.php?module=products&action=product_accessories"><span class="span_list" style="line-height: 55px;">Phụ Kiện </span><i class="fas fa-caret-down"></i></a>
 				<ul>
 		          <li>
 		            <a class="the_a" href="#"><span class="span_list" style="line-height: 55px;">Phụ Kiện Nam</span></a>

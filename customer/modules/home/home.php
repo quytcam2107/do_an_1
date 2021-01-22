@@ -488,7 +488,7 @@ background-size: 300px 100px;
        		 </ul>
 			</li>
 		<li>
-				<a class="the_a" href=""><span class="span_list" style="line-height: 55px;">Phụ Kiện </span><i class="fas fa-caret-down"></i></a>
+				<a class="the_a" href="index.php?module=products&action=product_accessories"><span class="span_list" style="line-height: 55px;">Phụ Kiện </span><i class="fas fa-caret-down"></i></a>
 				<ul>
 		          <li>
 		            <a class="the_a" href="#"><span class="span_list" style="line-height: 55px;">Phụ Kiện Nam</span></a>
