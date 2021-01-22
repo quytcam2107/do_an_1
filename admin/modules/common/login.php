@@ -1,10 +1,10 @@
 <?php 
-	$user = $pass = "";
+	$user = $pass = $error = "";
 	if(isset($_POST['btn'])){
 		$user = $_POST['user_admin'];
 		$pass = md5($_POST['pass']);
 
-		$sql = "SELECT id,name FROM admin WHERE users = '$user' AND pass = '$pass'";
+		$sql = "SELECT id,name FROM admin WHERE email = '$user' AND password = '$pass'";
 		$result = mysqli_query($conn,$sql);
 		if($result == false){
 			$error = "Lỗi ".mysqli_error($conn);
@@ -34,7 +34,7 @@
 		.div_form{
 			background: white;
 			width: 500px;
-			height: 300px;
+			height: 320px;
 			border:1px solid black;
 			margin: auto;
 			position: absolute;
@@ -133,12 +133,17 @@
 				<tr>
 					<td></td>
 					<td height="70px">
-						<button type="submit" name="btn" class="button button2">ĐĂNG NHẬP</button>
+						<button type="submit" name="btn" class="button button2">ĐĂNG NHẬP</button><br><br>
+						<span style="color: blue;font-weight: bold;">Đăng nhập để tiếp tục</span>
 						
-					</td>
-					
+					</td>	
 				</tr>
 					</form>
+					<span style="padding-left: 60px;color: red;font-weight: bolder;">
+						<?php 
+						echo $error;
+					 ?>
+					</span>
 			</table>
 	</div>
 			</div>

@@ -7,7 +7,17 @@
 		$action = $_GET['action'];
 	}
 	if($module == "" || $action == ""){
-		$module = "common";
-		
+		$module = "home";
+		$action = "home";
+	}
+	$path = "modules/$module/$action.php";
+	if (file_exists($path)) {
+		require_once("config/connect.php");
+		require_once("config/session.php");
+		require_once($path);
+		require_once("config/close.php");
+	}
+	else{
+		require_once("modules/common/404.php");
 	}
  ?>
