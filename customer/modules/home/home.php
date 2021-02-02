@@ -4,17 +4,18 @@
 	<title></title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<script src="https://kit.fontawesome.com/yourcode.js"></script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- <script src="https://kit.fontawesome.com/yourcode.js"></script> -->
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 	<link rel="shortcut icon" type="image/jpg" href="image/logo2.png"/>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" /> -->
+	<link rel="stylesheet" href="../publish/font_awesome/font-awesome-4.7.0/css/font-awesome.min.css">
 	<style type="text/css">
 		body{
 			margin: 0;
 			padding: 0;
 			box-sizing: border-box;
 			color:white;
-
+			font-family: Roboto-Regular,'Helvetica Neue',Helvetica,Tahoma,Arial,Sans-serif;
 		}
 		.div_tong{
 			width: 1520px;
@@ -36,6 +37,7 @@
         font-size: 15px;
         border-bottom: 2px solid red;
         border-top: 1px solid #525252;
+
 		}
 		/*.div_menu{
 			width: 99%;
@@ -72,15 +74,17 @@
 			
 		}
 		.div_center{
-			width: 72%;
+			width: 60%;
 			height: 100%;
-			/*background: #E8AC1B;*/
+		/*	background: #E8AC1B;*/
 			float: left;
+			position: relative;
 		}
 		.div_right{
-			width: 18%;
+			width: 30%;
 			height: 100%;
-			background: white;
+			/*background: black;*/
+			position: relative;
 			float: left;
 		}
 		.div_center_left{
@@ -136,7 +140,9 @@
 		  -webkit-transition-duration: 0.3s;
 		  transition-duration: 0.3s;
 		  font-family: Courier;
-
+		  position: absolute;
+		  top: 10px;
+		  right: 70px;
 		}
 		.hvr-shutter-in-horizontal:before {
 		  content: "";
@@ -158,26 +164,7 @@
 		  -webkit-transition-timing-function: ease-out;
 		  transition-timing-function: ease-out;
 		}
-			.hvr-shutter-in-horizontal:before {
-		  content: "";
-		  position: absolute;
-		  z-index: -1;
-		  top: 0;
-		  bottom: 0;
-		  left: 0;
-		  right: 0;
-		  background: #e1e1e1;
-		  -webkit-transform: scaleX(1);
-		  transform: scaleX(1);
-		  -webkit-transform-origin: 50%;
-		  transform-origin: 50%;
-		  -webkit-transition-property: transform;
-		  transition-property: transform;
-		  -webkit-transition-duration: 0.2s;
-		  transition-duration: 0.2s;
-		  -webkit-transition-timing-function: ease-out;
-		  transition-timing-function: ease-out;
-		}
+			
 		.hvr-shutter-in-horizontal:hover, .hvr-shutter-in-horizontal:focus, .hvr-shutter-in-horizontal:active {
 		  color: white;
 		}
@@ -207,7 +194,7 @@
 		  position: relative;
 		  overflow: hidden;
 		  padding: 5px;
-		  margin: 18px -30px 0px 40px;
+		  margin: 0px -5px 0px 20px;
 		}
 		.hvr-underline-reveal:before {
 		  content: "";
@@ -375,7 +362,7 @@ background-size: 300px 100px;
 		}
 		#i_1{
 			color: red;
-			font-size: 20px;
+			font-size: 28px;
 		}
 		#lb_cart{
 			line-height: 60px;
@@ -391,16 +378,17 @@ background-size: 300px 100px;
 			color: red;
 		}
 		.sp_name_1{
-			line-height: 60px;
+			line-height: 40px;
 			padding-right: 30px;
 			color: black;
 			padding-top: 10px;
+			display: block;
 		}
 
 		.a_logout{
 			text-decoration: none;
 			padding-left: 10px;
-			font-size: 10px;
+			/*font-size: 10px;*/
 			font-style: italic;
 			color: black;
 			font-family: fantasy;
@@ -419,43 +407,127 @@ background-size: 300px 100px;
 			color: black;
 			border-bottom: 2px solid #111CF4;
 		}
+		
+		#ul_first{
+			display: block;
+			width: 520px;
+			z-index: 999;
+			position: absolute;
+			top: -16px;
+			right: 0px;
+			background: white;
+		}
+		.li_top{
+			padding-top: 5px;
+			line-height: 50px;
+			color: black;
+			background: white;
+			width: 172px;
+			border-bottom: 0px;
+			height: 58px;
+		}
+		.li_top_1{
+			margin-top: 8px;
+			color: black;
+			
+		}
+		.li_top_1:hover{
+			background: #D7D7D7;
+		}
+		.ul_top_1 li{
+			background: none;
+			 border-bottom: 0px;
+			color: black;
+			background: white;
+			
+			width: 220px;
+		}
+		.fa.faout{
+			color: black;
+		}
+		#li_1{
+			/*width: 150px;*/
+		}
+		#li_2{
+			width: 220px;
+			background: #ECECEC;
+			border-bottom: 0px;
+		}
+		#li_3{
+			width: 125px;border-bottom: 0px;
+		}
+		#fa_1{
+			font-size: 18px;
+			padding-left: 5px;
+
+		}
+		.fa.user{
+			color: #068FB6;
+			font-size: 25px;
+
+		}
 		</style>
 
 </head>
 <body>
 <div class="div_tong">
-	<div class="div_top">
+	<div class="div_top" style="">
 		<a href="#">
 			<div class="div_left">
 			
 			</div>
 		</a>
-		<div class="div_center">
-			<div class="div_center_left">
-				<input class="input1" type="text" name="#" placeholder="Bạn cần tìm gì ..." size="50">
-				<button class="hvr-shutter-in-horizontal" type="submit">Tìm kiếm</button>
-			</div>
-			<div class="div_center_right">
-				<label id="lb_cart">
-					<i id="i_1" class="fas fa-cart-plus">&nbsp</i>
-					<a class="a_cart" href="#" style="text-decoration: none;color: black;">Giỏ hàng</a>
-				</label>
-			</div>
+		<div class="div_center" >
+			<input class="input1" type="text" name="#" placeholder="Bạn cần tìm gì ..." size="50">	
+			 <form method="POST">
+			 	<button name="btn" class="hvr-shutter-in-horizontal" type="submit" >Tìm kiếm</button>
+			 </form>	
 		</div>
 		<div class="div_right">
-			<?php 
+			<ul id="ul_first">
+				<li class="li_top" id="li_1">
+					<label id="lb_cart">
+						<i id="i_1" class="fa fa-cart-plus">&nbsp</i>
+						<a class="a_cart" href="index.php?module=invoice&action=cart" style="text-decoration: none;color: black;">Giỏ hàng
+							<?php 
+								$total_quantity = 0;
+								if (isset($_SESSION['user'])) {
+									if (isset($_SESSION['cart'])) {
+									foreach ($_SESSION['cart'] as $id => $quantity) {
+										$total_quantity += $quantity;
+									}
+								}
+								}
+								echo "<span style='color:red;font-size:18px;'>$total_quantity</span>";
+							 ?>
+						</a>
+					</label>
+				</li>
+				<li class="li_top" id="li_2">
+					<?php 
 				if (!isset($_SESSION['user'])) {
 					echo "<button class='hvr-underline-reveal' type='submit' name='btn_login'><a style='text-decoration: none;color: black;' href='index.php?module=common&action=login'>Đăng nhập</a></button>";
 					echo "<button class='hvr-underline-reveal' type='submit' name=''><a style='text-decoration: none;color: black;' href='index.php?module=common&action=login'>Đăng kí</a></button>";
+				     }	
+				else if(isset($_SESSION['user'])){
+						echo "<a style='text-decoration-line: none;' href='profile'>"."<span class='sp_name_1'>".'<i class="fa fa-user-circle-o user"></i>'.''.'&nbsp'.$_SESSION['user']['name']."</span>"."</a>";
+						echo "<ul class='ul_top_1'>";
+							echo "<li class='li_top_1'>";
+								echo "<a style='text-decoration-line: none;' style href='change_profile'>Thay đổi thông tin</a>";
+							echo "</li>";
+						echo "</ul>";
 				}
-				else{
-					echo "<span class='sp_name_1'>".'<i class="far fa-user-circle icon_name"></i>'.''.'&nbsp'.$_SESSION['user']['name']."</span>";
-					echo "";
-					echo "<a class='a_logout' href='index.php?module=common&action=logout'><i class='fas fa-power-off logout'></i> Đăng Xuất</a>";
-				}
-			 ?>
-			<!-- <button class="hvr-underline-reveal" type="submit" name="#"><a style="text-decoration: none;color: black;" href="index.php?module=common&action=login">Đăng nhập</a></button>
-			<button class="hvr-underline-reveal" type="submit" name="#">Đăng kí</button> -->
+				 ?>
+				</li>
+				<li  class="li_top" id="li_3">
+					<?php 
+						if (isset($_SESSION['user'])) {
+					
+					echo "<a class='a_logout' href='index.php?module=common&action=logout'><i class='fa fa-sign-out faout'></i> Đăng Xuất</a>";
+				     }	
+					 ?>
+				</li>
+			</ul>
 		</div>
 	</div>
 	<div class="div_menu">
@@ -465,30 +537,33 @@ background-size: 300px 100px;
 				<a class="the_a" href="index.php?module=home&action=home"><span class="span_list" style="line-height: 55px;">Trang Chủ</span></a>
 			</li>
 			
-	      <li >
-        	<a class="the_a" href="index.php?module=products&action=product_trousers"><span class="span_list" style="line-height: 55px;">Quần </span>  <i class="fas fa-caret-down"></i></a>
+	      <li class="<?php if($action == "product_trousers") echo "active" ?>">
+	      		<a class="the_a" href="index.php?module=products&action=all_fashion_men"><span class="span_list" style="line-height: 55px;">Thời Trang Nam</span><i id="fa_1" class="fa fa-angle-down"></i></a>	
         <ul>
           <li>
-            <a class="the_a" href="#"><span class="span_list" style="line-height: 55px;">Quần Nam</span></a>
+            <a class="the_a" href="#"><span class="span_list" style="line-height: 55px;">Quần Jean</span></a>
           </li>
           <li>
-            <a class="the_a" href="#"><span class="span_list" style="line-height: 55px;">Quần Nữ</span></a>
+            <a class="the_a" href="#"><span class="span_list" style="line-height: 55px;">Áo Sơ Mi</span></a>
+          </li>
+           <li>
+            <a class="the_a" href="#"><span class="span_list" style="line-height: 55px;">Áo Trắng</span></a>
           </li>
         </ul>
       </li>
-      		<li>
-				<a class="the_a" href=""><span class="span_list" style="line-height: 55px;">Áo </span><i class="fas fa-caret-down"></i></a>
+      		<li  class="<?php if($action == "product_shirt") echo "active" ?>">
+				<a class="the_a" href="index.php?module=products&action=product_shirt"><span class="span_list" style="line-height: 55px;">Thời Trang Nữ</span><i id="fa_1" class="fa fa-angle-down"></i></a>
 				<ul>
 		          <li>
-		            <a class="the_a" href="index.php?module=products&action=product_shirt"><span class="span_list" style="line-height: 55px;">Áo Nam</span></a>
+		            <a class="the_a" href=""><span class="span_list" style="line-height: 55px;">Áo Sơ Mi Nữ</span></a>
 		          </li>
 		          <li>
-		            <a class="the_a" href="#"><span class="span_list" style="line-height: 55px;">Áo Nữ</span></a>
+		            <a class="the_a" href="#"><span class="span_list" style="line-height: 55px;">Áo Thun</span></a>
 		          </li>
        		 </ul>
 			</li>
 		<li>
-				<a class="the_a" href="index.php?module=products&action=product_accessories"><span class="span_list" style="line-height: 55px;">Phụ Kiện </span><i class="fas fa-caret-down"></i></a>
+				<a class="the_a" href="index.php?module=products&action=product_accessories"><span class="span_list" style="line-height: 55px;">Phụ Kiện </span><i id="fa_1" class="fa fa-angle-down"></i></a>
 				<ul>
 		          <li>
 		            <a class="the_a" href="#"><span class="span_list" style="line-height: 55px;">Phụ Kiện Nam</span></a>

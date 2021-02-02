@@ -10,7 +10,7 @@
 	$tittle = "Quản lý thương hiệu";
 	require_once("layout/header.php");
  ?>
- 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+ 	
  	<style type="text/css">
  		table{
  			width: 950px;
@@ -48,14 +48,14 @@
  		.a_trademark_2{
  			text-decoration: none;
  		}
- 		.fas.fas2{
+ 		.fa.fa1{
  			color: #08ECD4;
  			font-size: 20px;
  		}
  		.fas.fas2:hover{
  			color: #114943;
  		}
- 		.far.fas3{
+ 		.fa.fa2{
  			color: red;
  			font-size: 20px;
  		}
@@ -67,7 +67,7 @@
 
  	<div>
  			<h2 class="h2_trademark_1" style="text-align: center;">Quản Lý Thương Hiệu</h2><br>
- 			<i style="font-size: 18px;color:#F01035;" class="fas fa-plus-square"></i>  <a class="insert_trademark" href="index.php?module=trademark&action=insert_trademark">Thêm Thương Hiệu</a><br><br>
+ 			<i style="font-size: 18px;color:#F01035;" class="fa fa-plus-circle fa_3"></i>  <a class="insert_trademark" href="index.php?module=trademark&action=insert_trademark">Thêm Thương Hiệu</a><br><br>
  			<table >
  			<tr>
  			<th>ID</th>
@@ -93,10 +93,10 @@
  							echo "<td>".$value['origin']."</td>";
  							echo "<td>";
  								echo "<label>";
- 								echo "<a class='a_trademark_1' href='index.php?module=trademark&action=edit&id=$id'><i class='fas fa-pen-square fas2'></i>&nbspSửa</a>";
+ 								echo "<a class='a_trademark_1' href='index.php?module=trademark&action=edit&id=$id'><i class='fa fa-pencil-square-o fa1'></i>&nbspSửa</a>";
  								echo "</label>";
  								echo "<label>";
- 								echo "<a class='a_trademark_2' href='index.php?module=trademark&action=delete&id=$id'><i class='far fa-trash-alt fas3'></i>&nbspXoá</a>";
+ 								echo "<a class='a_trademark_2' href='index.php?module=trademark&action=delete&id=$id'><i class='fa fa-trash-o fa2'></i>&nbspXoá</a>";
  								echo "</label>";
  							echo "</td>";
 							echo "</tr>";

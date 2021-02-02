@@ -1,9 +1,47 @@
+<?php 
+	$result_page = mysqli_query($conn,"SELECT COUNT(`id`) AS 'tong_sp' FROM product");
+			$product = mysqli_fetch_assoc($result_page);
+			$total_product = $product['tong_sp'];
+			$limit = 5;
+			$total_page = ceil($total_product/$limit);
+			if(isset($_GET['page'])){
+				$page = $_GET['page'];
+			}else{
+				$page = 1;
+			}
+			if($page > $total_page){
+				$page = $total_page;
+			}
+			if($page < 1){
+				$page = 1;
+			}
+			$offset = ($page - 1) *$limit;
+ 			$sql = "SELECT * FROM product LIMIT $offset,$limit";
 
+ 			if (isset($_POST['button_search'])) {
+				$keyword = trim($_POST['input_search']);
+				$sql = "SELECT * FROM product WHERE name LIKE '%$keyword%' ";
+				if (empty($keyword) == true) {
+					$sql = "SELECT * FROM product LIMIT $offset,$limit";
+				}
+			}
+
+ 			$result = mysqli_query($conn,$sql);
+ 			$total = mysqli_num_rows($result);
+ ?>
 <?php 
 	$tittle = "Quản lý sản phẩm";
 	require_once("layout/header.php");
  ?>
  <style type="text/css">
+
+ 	.div_list_products{
+ 		width:100%;
+ 		height: 1050px;
+ 		
+ 		/*overflow: auto;*/
+ 		/*position: fixed;*/
+ 	}
  	table{
  		width: 100%;
  		border-collapse: collapse;
@@ -16,38 +54,38 @@
  		width: 50px;
  		height: 20px;
  		
- 		background: pink;
+ 		background: #A7A0A0;
  	}
  	#th_2{
  		width: 90px;
  		height: 30px;
- 		background: pink;
+ 		background: #A7A0A0;
  	}
  	#th_3{
  		width: 70px;
  		height: 20px;
- 		background: pink;
+ 		background: #A7A0A0;
  	}
  	#th_4{
  		width: 30px;
  		height: 20px;
- 		background: pink;
+ 		background: #A7A0A0;
  	}
  	#th_5{
  		width: 60px;
  		height: 20px;
- 		background: pink;
+ 		background: #A7A0A0;
  	}
  	#th_6{
  		width: 50px;
  		height: 20px;
- 		background: pink;
+ 		background: #A7A0A0;
  	}
  	#th_7{
  		width: 80px;
  		height: 20px;
  		color: #0510E9;
- 		background: pink;
+ 		background: #A7A0A0;
  	}
 
  	#td_1{
@@ -145,6 +183,16 @@
 	.input1:hover{
 			border: 2px solid #F70808;
 	}
+	.fa.fa1{
+		color: #07D6EE;
+	}
+	.fa.fa2{
+		color: red;
+	}
+	.fa.fa_3{
+		color: #05929B;
+		font-size: 20px;
+	}
  </style>
  <div class="div_list_products">
  	<h2 class="h2_products_1" style="text-align: center;">Quản Lý Sản Phẩm</h2>
@@ -152,7 +200,21 @@
  		<input class="input1" type="text" name="input_search" placeholder="Bạn cần tìm gì ..." size="50">
 		<button class="hvr-shutter-in-horizontal" type="submit" name="button_search">Tìm kiếm</button>
  	</form>
- 	<i style="font-size: 18px;color:#F01035;" class="fas fa-plus-square"></i> <a style="text-decoration: none;font-family: sans-serif;font-size: 15px;color: blue;" href="index.php?module=products&action=insert">Thêm Sản Phẩm</a><br><br>
+ 	<i class="fa fa-plus-circle fa_3" aria-hidden="true"></i> <a style="text-decoration: none;font-family: sans-serif;font-size: 15px;color: blue;" href="index.php?module=products&action=insert">Thêm Sản Phẩm</a><br><br>
+ 	<span style="font-size: 20px;float: right;">
+ 	<?php 
+ 		echo "Có tổng :".$total_product." Sản Phẩm";
+ 	 ?>
+ 	 </span>
+ 	 <br>
+ 	 <h3>
+ 	 <?php 
+ 	 	if (empty($_POST['input_search']) == false) {
+ 	 		echo "Có  ".$total." kết quả tìm thấy cho : $keyword";
+ 	 	}
+ 		
+ 	 ?>
+ 	 </h3>
  	<table>
  		<tr>
  			<th id="th_1">ID</th>
@@ -164,34 +226,6 @@
  			<th id="th_7" colspan="2">Hành Động</th>
  		</tr>	
  		<?php 
- 			$result_page = mysqli_query($conn,"SELECT COUNT(`id`) AS 'tong_sp' FROM product");
-			$product = mysqli_fetch_assoc($result_page);
-			$total_product = $product['tong_sp'];
-			$limit = 4;
-			$total_page = ceil($total_product/$limit);
-			if(isset($_GET['page'])){
-				$page = $_GET['page'];
-			}else{
-				$page = 1;
-			}
-			if($page > $total_page){
-				$page = $total_page;
-			}
-			if($page < 1){
-				$page = 1;
-			}
-			$offset = ($page - 1) *$limit;
- 			$sql = "SELECT * FROM product LIMIT $offset,$limit";
-
- 			if (isset($_POST['button_search'])) {
-				$keyword = trim($_POST['input_search']);
-				$sql = "SELECT * FROM product WHERE name LIKE '%$keyword%'";
-				if (empty($keyword) == true) {
-					$sql = "SELECT * FROM product LIMIT $offset,$limit";
-				}
-			}
-
- 			$result = mysqli_query($conn,$sql);
  			if ($result == false) {
  				echo "ERROR :".mysqli_error($conn);
  			}
@@ -206,8 +240,11 @@
  							$name = $value['name'];
  							echo "<p>$name</p>";
  							echo "<br>";
- 							$url = $value['image_product'];
- 							echo "<img src='$url' width='100px'>";
+ 							$sql2 = "SELECT * FROM image_product WHERE id = $id";
+ 							$result2 = mysqli_query($conn,$sql2);
+ 							$row2 = mysqli_fetch_assoc($result2);
+ 							$url2 = $row2['url'];
+ 							echo "<img src='$url2' width='100px;'>";
  						echo "</td>";
  						// echo "<td>";
  						// 	// $arrTrademark = array(0=>"Guuci",1=>"Dolce & Gabbana");
@@ -227,18 +264,19 @@
  							echo $arrStatus[$status];
  						echo "</td>";
  						echo "<td class='td_a'>";
- 							echo "<a href='index.php?module=products&action=edit&id=$id'><i class='fas fa-pen-square fas2'></i>&nbspSửa</a>";
+ 							echo "<a class='a_change' href='index.php?module=products&action=edit&id=$id'><i class='fa fa-pencil-square-o fa1'></i>&nbspSửa</a>";
  							
  						echo "</td>";
  						echo "<td class='td_a'>";
  							
- 							echo "<a href='index.php?module=products&action=delete&id=$id'><i class='far fa-trash-alt fas3'></i>&nbspXoá</a>";
+ 							echo "<a class='a_change' href='index.php?module=products&action=delete_2&id=$id'><i class='fa fa-trash-o fa2'></i>&nbspXoá</a>";
  						echo "</td>";
  					echo "</tr>";
  				}
  			}
  		 ?>
  	</table>
+ 	<br>
  	<a href="?module=products&action=list&page=<?php echo ($page-1)?>">Trang trước</a>
 	<span><?php echo " < $page > " ?></span>
 	<a href="?module=products&action=list&page=<?php echo ($page+1) ?>">Trang sau</a>

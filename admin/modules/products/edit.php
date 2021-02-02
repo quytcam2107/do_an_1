@@ -12,13 +12,15 @@
 			$price = $row['price'];
 			$color = $row['color'];
 			$status = $row['status'];
-			$path = $row['image_product'];
 			$description = $row['description'];
 			$year = $row['year_manufacturing'];
 			$type = $row['id_type'];
 			$size = $row['id_size'];
 			$trademark = $row['id_trademark'];
 		}
+	}
+	else{
+		header("location:index.php?module=products&action=list");
 	}
 	if (isset($_POST['btn_edit'])) {
 		$name = $_POST['name'];
@@ -29,23 +31,23 @@
 		$year = $_POST['year'];
 		$size = $_POST['size'];
 		$trademark = $_POST['trademark'];
-		$description = $_POST['description'];
+		$description = $_POST['editor'];
 
-		if ($_FILES['image_product']['size'] > 0) {
-			$folder = "../publish/images/";
-			$file = $_FILES['image_product'];
-			$path = $folder.$file['name'];
-			move_uploaded_file($file['tmp_name'],$path);
+		// if ($_FILES['image_product']['size'] > 0) {
+		// 	$folder = "../publish/images/";
+		// 	$file = $_FILES['image_product'];
+		// 	$path = $folder.$file['name'];
+		// 	move_uploaded_file($file['tmp_name'],$path);
 
-		}
+		// }
 		
-		$sql = "UPDATE product SET name = '$name',price = '$price',color='$color',status = '$status',image_product = '$path',description = '$description',year_manufacturing = '$year',id_type='$type',id_size = '$size',id_trademark = '$trademark' WHERE id = '$id' ";
+		$sql = "UPDATE product SET name = '$name',price = '$price',color='$color',status = '$status',description = '$description',year_manufacturing = '$year',id_type='$type',id_size = '$size',id_trademark = '$trademark' WHERE id = '$id' ";
 		$result = mysqli_query($conn,$sql);
 		if ($result == false) {
 			echo "ERROR :".mysqli_error($conn);
 		}
 		else{
-			header("location:index.php?module=products&action=list");
+			header("location:index.php?module=products&action=edit_img2&id=$id");
 		}
 	}
 ?>	
@@ -253,21 +255,22 @@
  		</label><br>
  		<br>
  		<hr>
- 		<label id="lb_image">
+ 		<!-- <label id="lb_image">
  			<i class="far fa-images" style="font-size: 20px;"></i>Ảnh sản Phẩm :<br><br>
  			<img style="margin-left: 300px;" src="<?php echo $path ?>" width="220px;" height="180px;" id="preview_image"><br>
  			<input style="margin-left: 300px;border: 0px;" onchange="change_image()" type="file" name="image_product" accept="image/*" id="file_image" >
- 		</label>
+ 		</label> -->
  		
  		<br>
 		<hr>
  		<br>
  		<label id="lb_description">
  			<span  id="sp_1_products"><i class="fas fa-comment-medical" style="font-size: 20px;"></i>Mô tả:</span><br>	
- 			<textarea name="description" style="margin-left: 50px;" cols="95" rows="10">
+ 			<textarea class="ckeditor" name="editor">
  				<?php 
  					echo $description;
  				 ?>
+ 			</textarea>
  			</textarea>
  		</label>
  		<br><br>

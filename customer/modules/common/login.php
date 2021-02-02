@@ -3,7 +3,7 @@
 	if (isset($_POST['btn_login'])) {
 		$user = $_POST['user'];
 		$password = $_POST['password'];
-		$conn = mysqli_connect('localhost','root','','project_1');
+		$conn = mysqli_connect('localhost','root','','project_2');
 		if(!$conn) die("ket noi that bai".mysqli_connect_eror()); 
 		$sql = "SELECT id,name FROM customer WHERE (phone = '$user' OR email = '$user') AND password = '$password'";
 		$result = mysqli_query($conn,$sql);
@@ -67,7 +67,8 @@
 		.div_product{
 			width: 100%;
 			height: 67%;
-			
+			background: url(../publish/source3.gif);
+			background-position: center center;
 		}
 		.div_footer{
 			width: 100%;
@@ -193,13 +194,18 @@
 			padding-left: 250px;
 			width: 500px;
 			height: 400px;
-			background: #28DCCD;
+			/*background: url(../publish/source3.gif);*/
+			background: #ABEBF1;
+			
 			margin: auto;
 			margin-top: 10px;
 			border-radius: 10px;
 		}
 		form{
 			padding-top: 80px;
+			color: #FF3600;
+			font-weight: bold;
+			width: 100%;
 		}
 		.div_banner{
 			width: 100%;
@@ -281,7 +287,7 @@
 				<input class="input1" type="text" name="#" placeholder="Bạn cần tìm gì ..." size="50">
 				<button class="hvr-shutter-in-horizontal" type="submit">Tìm kiếm</button>
 			</div>
-			<div class="div_center_right">
+			<div class="div_center_right" >
 				<label>
 					<a class="a_1" href="#"><span class="span1"><i id="i_1" class="fas fa-cart-plus">&nbsp</i>Giỏ hàng</span></a>
 				</label>
@@ -299,34 +305,37 @@
 	<div class="div_product">
 		<div class="div_banner">
 			<ul class="ul_first">
-			<li>
+			<li class="<?php if($action == "home") echo "active" ?>">
 				<a class="the_a" href="index.php?module=home&action=home"><span class="span_list" style="line-height: 55px;">Trang Chủ</span></a>
 			</li>
 			
-	      <li>
-        	<a class="the_a" href="index.php?module=products&action=product_trousers"><span class="span_list" style="line-height: 55px;">Quần </span>  <i class="fas fa-caret-down"></i></a>
+	      <li class="<?php if($action == "product_trousers") echo "active" ?>">
+        	<a class="the_a" href="index.php?module=products&action=product_trousers"><span class="span_list" style="line-height: 55px;">Thời Trang Nam</span>  <i class="fas fa-caret-down"></i></a>
         <ul>
           <li>
-            <a class="the_a" href="#"><span class="span_list" style="line-height: 55px;">Quần Nam</span></a>
+            <a class="the_a" href="#"><span class="span_list" style="line-height: 55px;">Quần Jean</span></a>
           </li>
           <li>
-            <a class="the_a" href="#"><span class="span_list" style="line-height: 55px;">Quần Nữ</span></a>
+            <a class="the_a" href="#"><span class="span_list" style="line-height: 55px;">Áo Sơ Mi</span></a>
+          </li>
+           <li>
+            <a class="the_a" href="#"><span class="span_list" style="line-height: 55px;">Áo Trắng</span></a>
           </li>
         </ul>
       </li>
-      		<li>
-				<a class="the_a" href=""><span class="span_list" style="line-height: 55px;">Áo </span><i class="fas fa-caret-down"></i></a>
+      		<li  class="<?php if($action == "product_shirt") echo "active" ?>">
+				<a class="the_a" href="index.php?module=products&action=product_shirt"><span class="span_list" style="line-height: 55px;">Thời Trang Nữ</span><i class="fas fa-caret-down"></i></a>
 				<ul>
 		          <li>
-		            <a class="the_a" href="#"><span class="span_list" style="line-height: 55px;">Áo Nam</span></a>
+		            <a class="the_a" href=""><span class="span_list" style="line-height: 55px;">Áo Sơ Mi Nữ</span></a>
 		          </li>
 		          <li>
-		            <a class="the_a" href="#"><span class="span_list" style="line-height: 55px;">Áo Nữ</span></a>
+		            <a class="the_a" href="#"><span class="span_list" style="line-height: 55px;">Áo Thun</span></a>
 		          </li>
        		 </ul>
 			</li>
 		<li>
-				<a class="the_a" href=""><span class="span_list" style="line-height: 55px;">Phụ Kiện </span><i class="fas fa-caret-down"></i></a>
+				<a class="the_a" href="index.php?module=products&action=product_accessories"><span class="span_list" style="line-height: 55px;">Phụ Kiện </span><i class="fas fa-caret-down"></i></a>
 				<ul>
 		          <li>
 		            <a class="the_a" href="#"><span class="span_list" style="line-height: 55px;">Phụ Kiện Nam</span></a>
@@ -337,6 +346,7 @@
        		 </ul>
 			</li>
 		</ul>
+		
 		</div>
 		<div class="div_form">
 		<form method="POST">
@@ -362,3 +372,4 @@
 </div>
 </body>
 </html>
+

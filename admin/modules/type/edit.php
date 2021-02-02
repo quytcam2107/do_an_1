@@ -111,7 +111,7 @@
  	<form method="POST">
  		<table>
  			<tr>
- 				<td><span class="sp1_insert_type"><i class="fas fa-bahai fas_insert"></i>    Tên Loại :</span></td>
+ 				<td><span class="sp1_insert_type"><i class="fa fa-th-large"></i>    Tên Loại :</span></td>
  				<td><input type="text" name="edit_name_type" placeholder="Tên Thương Hiệu" size="40" required value="<?php echo $edit_name_type ?>"></td>
  			</tr>
  		</table>

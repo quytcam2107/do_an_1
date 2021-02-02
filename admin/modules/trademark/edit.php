@@ -111,11 +111,11 @@
  	<form method="POST">
  		<table>
  			<tr>
- 				<td><span class="sp1_insert_trademark"><i class="fas fa-registered i1"></i>    Thương Hiệu :</span></td>
+ 				<td><span class="sp1_insert_trademark"><i class="fa fa-linode"></i>    Thương Hiệu :</span></td>
  				<td><input type="text" name="edit_name_trademark" placeholder="Tên Thương Hiệu" size="40" required value="<?php echo $edit_name_trademark ?>"></td>
  			</tr>
  			<tr>
- 				<td><span class="sp1_insert_trademark"><i class="fas fa-asterisk i2"></i>    Xuất Xứ :</span></td>
+ 				<td><span class="sp1_insert_trademark"><i class="fa fa-flag-o"></i>    Xuất Xứ :</span></td>
  				<td><input type="text" name="origin_trademark" placeholder="Nơi Xuất Xứ" size="40" required value="<?php echo $edit_origin_trademark ?>"></td>
  			</tr>
  		</table>
