@@ -7,6 +7,7 @@
 		$file = $_FILES['img_1'];
 		$path = $folder.$file['name'];
 		move_uploaded_file($file['tmp_name'],$path);
+		
 		$sql = "INSERT INTO image_product VALUES('$id','$path')";
 		$result = mysqlI_query($conn,$sql);
 		if ($result == false) {

@@ -68,7 +68,7 @@
  		.sp1_insert_type{
  			font-weight: bolder;
  			font-size: 18px;
- 			margin-bottom: 20px;
+ 			margin-bottom: 15px;
  			position: absolute;
  			top: -14px;
  		}
@@ -86,7 +86,7 @@
  		<table>
  			<tr>
  				<td><span class="sp1_insert_type"><i class="fas fa-bahai fas_insert"></i>   Tên Loại :</span></td>
- 				<td><input type="text" name="name_type" placeholder="Tên Loại" size="40" required></td>
+ 				<td><input style="padding-left: 8px;" type="text" name="name_type" placeholder="Tên Loại" size="40" required></td>
  			</tr>
  			<tr>
  				<td colspan="2"><button type="submit" name="btn">Thêm Loại</button></td>

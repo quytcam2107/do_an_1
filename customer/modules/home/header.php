@@ -435,7 +435,8 @@ background-size: 300px 100px;
 			<div class="div_center_right">
 				<label id="lb_cart">
 					<i id="i_1" class="fas fa-cart-plus">&nbsp</i>
-					<a class="a_cart" href="#" style="text-decoration: none;color: black;">Giỏ hàng</a>
+					<a class="a_cart" href="#" style="text-decoration: none;color: black;">Giỏ hàng
+					</a>
 				</label>
 			</div>
 		</div>
@@ -443,7 +444,7 @@ background-size: 300px 100px;
 			<?php 
 				if (!isset($_SESSION['user'])) {
 					echo "<button class='hvr-underline-reveal' type='submit' name='btn_login'><a style='text-decoration: none;color: black;' href='index.php?module=common&action=login'>Đăng nhập</a></button>";
-					echo "<button class='hvr-underline-reveal' type='submit' name=''><a style='text-decoration: none;color: black;' href='index.php?module=common&action=login'>Đăng kí</a></button>";
+					echo "<button class='hvr-underline-reveal' type='submit' name=''><a style='text-decoration: none;color: black;' href='index.php?module=common&action=register'>Đăng kí</a></button>";
 				}
 				else{
 					echo "<span class='sp_name_1'>".'<i class="far fa-user-circle icon_name"></i>'.'&nbsp'.$_SESSION['user']['name']."</span>";

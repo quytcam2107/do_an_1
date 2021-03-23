@@ -204,11 +204,21 @@
  		<label id="lb_size">
  			<i class="fa fa-tasks" style="font-size: 20px;"></i>  Kích Cỡ :	
  			<select class="sl_insert" name="size" style="padding: 10px 10px;margin-left: 85px;">
- 				<option value="1">S</option>
- 				<option value="2">M</option>
- 				<option value="3">L</option>
- 				<option value="4">XL</option>
- 				<option value="5">XXL</option>
+ 				<?php 
+ 					$sql = "SELECT id,name_size FROM size";
+ 					$result = mysqli_query($conn,$sql);
+ 					if ($result == false) {
+ 						echo "ERROR :".mysqli_error($conn);
+ 					}
+ 					elseif (mysqli_num_rows($result)  > 0) {
+ 						foreach ($result as $row) {
+ 							$id_size_insert = $row['id'];
+ 							echo "<option value='$id_size_insert'>";
+ 								echo $row['name_size'];
+ 							echo "</option>";
+ 						}
+ 					}
+ 				 ?>
  			</select>
  		</label>
  		<label id="lb_trademark">

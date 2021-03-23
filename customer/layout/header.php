@@ -3,12 +3,9 @@
 <head>
 	<title></title>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- <script src="https://kit.fontawesome.com/yourcode.js"></script> -->
-	<link rel="stylesheet" href="../publish/font_awesome/font-awesome-4.7.0/css/font-awesome.min.css">
-	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">	
+	<link rel="stylesheet" href="../publish/font_awesome/font-awesome-4.7.0/css/font-awesome.min.css">	
 	<link rel="shortcut icon" type="image/jpg" href="image/logo2.png"/>
-	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" /> -->
 	<style type="text/css">
 		body{
 			margin: 0;
@@ -60,8 +57,8 @@
 		}
 		.div_footer{
 			width: 100%;
-			height: 100px;
-			background: black;
+			height: 150px;
+			background: white;
 		}
 		.div_left{
 			width: 10%;
@@ -458,6 +455,14 @@ background-size: 300px 100px;
 			padding-left: 5px;
 
 		}
+		.fa.faout{
+			color: black;
+		}
+		.fa.user{
+			color: black;
+			font-size: 25px;
+
+		}
 		</style>
 
 </head>
@@ -479,15 +484,18 @@ background-size: 300px 100px;
 			<ul id="ul_first">
 				<li class="li_top" id="li_1">
 					<label id="lb_cart">
-						<i id="i_1" class="fa fa-cart-plus">&nbsp</i>
+						<i id="i_1" class="fa fa-cart-plus" style="font-size: 28px;">&nbsp</i>
 						<a class="a_cart" href="index.php?module=invoice&action=cart" style="text-decoration: none;color: black;">Giỏ hàng
 							<?php 
 								$total_quantity = 0;
-								if (isset($_SESSION['cart'])) {
+								// if (isset($_SESSION['user'])) {
+									if (isset($_SESSION['cart'])) {
 									foreach ($_SESSION['cart'] as $id => $quantity) {
 										$total_quantity += $quantity;
 									}
-								}echo "($total_quantity)";
+								}
+								// }
+								echo "<span style='color:red;font-size:18px;'>$total_quantity</span>";
 							 ?>
 						</a>
 					</label>
@@ -496,10 +504,10 @@ background-size: 300px 100px;
 					<?php 
 				if (!isset($_SESSION['user'])) {
 					echo "<button class='hvr-underline-reveal' type='submit' name='btn_login'><a style='text-decoration: none;color: black;' href='index.php?module=common&action=login'>Đăng nhập</a></button>";
-					echo "<button class='hvr-underline-reveal' type='submit' name=''><a style='text-decoration: none;color: black;' href='index.php?module=common&action=login'>Đăng kí</a></button>";
+					echo "<button class='hvr-underline-reveal' type='submit' name=''><a style='text-decoration: none;color: black;' href='index.php?module=common&action=register'>Đăng kí</a></button>";
 				     }	
 				else if(isset($_SESSION['user'])){
-						echo "<a style='text-decoration-line: none;' href='profile'>"."<span class='sp_name_1'>".'<i class="fa fa-user-circle-o"></i>'.''.'&nbsp'.$_SESSION['user']['name']."</span>"."</a>";
+						echo "<a style='text-decoration-line: none;' href='profile'>"."<span class='sp_name_1'>".'<i class="fa fa-user-circle-o user"></i>'.''.'&nbsp'.$_SESSION['user']['name']."</span>"."</a>";
 						echo "<ul class='ul_top_1'>";
 							echo "<li class='li_top_1'>";
 								echo "<a style='text-decoration-line: none;' style href='change_profile'>Thay đổi thông tin</a>";
@@ -512,7 +520,7 @@ background-size: 300px 100px;
 					<?php 
 						if (isset($_SESSION['user'])) {
 					
-					echo "<a class='a_logout' href='index.php?module=common&action=logout'><i class='fas fa-power-off logout'></i> Đăng Xuất</a>";
+					echo "<a class='a_logout' href='index.php?module=common&action=logout'><i class='fa fa-sign-out faout'></i> Đăng Xuất</a>";
 				     }	
 					 ?>
 				</li>
@@ -527,27 +535,27 @@ background-size: 300px 100px;
 			</li>
 			
 	      <li class="<?php if($action == "product_trousers") echo "active" ?>">
-	      		<a class="the_a" href="index.php?module=products&action=all_fashion_men"><span class="span_list" style="line-height: 55px;">Thời Trang Nam</span><i id="fa_1" class="fa fa-angle-down"></i></a>	
+	      		<a class="the_a" href="#"><span class="span_list" style="line-height: 55px;">Thời Trang Nam</span><i id="fa_1" class="fa fa-angle-down"></i></a>	
         <ul>
           <li>
-            <a class="the_a" href="#"><span class="span_list" style="line-height: 55px;">Quần Jean</span></a>
+           <a class="the_a" href="index.php?module=products&action=product_menfashion"><span class="span_list" style="line-height: 55px;">Quần Jean</span></a>
           </li>
           <li>
-            <a class="the_a" href="#"><span class="span_list" style="line-height: 55px;">Áo Sơ Mi</span></a>
+            <a class="the_a" href="index.php?module=products&action=shirt"><span class="span_list" style="line-height: 55px;">Áo Sơ Mi</span></a>
           </li>
            <li>
-            <a class="the_a" href="#"><span class="span_list" style="line-height: 55px;">Áo Trắng</span></a>
+            <a class="the_a" href="index.php?module=products&action=coat"><span class="span_list" style="line-height: 55px;">Áo Khoác</span></a>
           </li>
         </ul>
       </li>
       		<li  class="<?php if($action == "product_shirt") echo "active" ?>">
-				<a class="the_a" href="index.php?module=products&action=product_shirt"><span class="span_list" style="line-height: 55px;">Thời Trang Nữ</span><i id="fa_1" class="fa fa-angle-down"></i></a>
+				<a class="the_a" href="#"><span class="span_list" style="line-height: 55px;">Thời Trang Nữ</span><i id="fa_1" class="fa fa-angle-down"></i></a>
 				<ul>
 		          <li>
-		            <a class="the_a" href=""><span class="span_list" style="line-height: 55px;">Áo Sơ Mi Nữ</span></a>
+		            <a class="the_a" href="index.php?module=products&action=shirt_women"><span class="span_list" style="line-height: 55px;">Áo Sơ Mi Nữ</span></a>
 		          </li>
 		          <li>
-		            <a class="the_a" href="#"><span class="span_list" style="line-height: 55px;">Áo Thun</span></a>
+		            <a class="the_a" href="index.php?module=products&action=tshirt_women"><span class="span_list" style="line-height: 55px;">Áo Thun</span></a>
 		          </li>
        		 </ul>
 			</li>

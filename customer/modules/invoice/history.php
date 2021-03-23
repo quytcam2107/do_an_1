@@ -1,15 +1,14 @@
 <?php 
-	$tittle = "Quản lý hoá đơn";
-	require_once("layout/header.php");
+	if (!isset($_SESSION['user']['id'])) {
+		header("location:index.php");
+		die();
+	}
  ?>
- <?php 
- 	$sql = "SELECT * FROM invoice ORDER BY create_at  DESC ";
- 	$result = mysqli_query($conn,$sql);
- 	if ($result == false) {
- 		echo "Error :".mysqli_error($conn);
- 	}
-  ?>
-  <style type="text/css">
+<?php 
+$tittle = "Lịch sử mua hàng";
+require_once 'layout/header.php';
+?>
+<style type="text/css">
 	*{
 		color: black;
 	}
@@ -22,8 +21,17 @@
 		border: 1px solid black;
 	}
 </style>
- <div>
- 	<table>
+<?php 
+	$id_customer =$_SESSION['user']['id'];
+	$sql = "SELECT id,create_at,total_money,status,receiver,address,phone FROM invoice WHERE id_customer = '$id_customer'";
+	$result = mysqli_query($conn,$sql);
+	if ($result == false) {
+		die("Error :".mysqli_error($conn));
+	}
+ ?>
+<div>
+	<h1>Lịch sử mua hàng</h1>
+	<table>
 		<tr>
 			<th>Mã hoá đơn</th>
 			<th>Thông tin khách hàng</th>
@@ -54,10 +62,7 @@
 						$arrStatus = array(0=> "Chưa duyệt",1=> "Đã duyệt",2=>"Thành công",3=>"Đã huỷ");
 						echo $arrStatus[$row['status']];
 						if ($row['status'] == 0) {
-							echo "<button><a href='index.php?module=invoice&action=accept&id=$id_invoice'>Duyệt đơn hàng</a></button>";
-						}
-						else if($row['status'] == 1){
-							echo "<button><a href='index.php?module=invoice&action=success&id=$id_invoice'>Xác nhận thành công</a></button>";
+							echo "<button><a href='index.php?module=invoice&action=cancel&id=$id_invoice'>Huỷ đơn hàng</a></button>";
 						}
 					echo "</td>";
 					echo "<tr>";
@@ -66,9 +71,7 @@
 			}
 		 ?>
 	</table>
- </div>
- <?php 
-	require_once("layout/footer.php");
+</div>
+<?php 
+	require_once 'layout/footer.php';
  ?>
- <!DOCTYPE html>
- 

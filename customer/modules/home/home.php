@@ -4,22 +4,19 @@
 	<title></title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- <script src="https://kit.fontawesome.com/yourcode.js"></script> -->
-	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 	<link rel="shortcut icon" type="image/jpg" href="image/logo2.png"/>
-	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" /> -->
 	<link rel="stylesheet" href="../publish/font_awesome/font-awesome-4.7.0/css/font-awesome.min.css">
 	<style type="text/css">
 		body{
 			margin: 0;
 			padding: 0;
 			box-sizing: border-box;
-			color:white;
+			color:black;
 			font-family: Roboto-Regular,'Helvetica Neue',Helvetica,Tahoma,Arial,Sans-serif;
 		}
 		.div_tong{
 			width: 1520px;
-			height: 1200px;
+			height: 2100px;
 			background: white;
 
 		}
@@ -49,19 +46,20 @@
 
 		.div_banner{
 			width: 100%;
-			height: 26%;
+			height: 20%;
 			background: white;
 			position: relative;
 		}
 		.div_product{
 			width: 100%;
-			height: 58%;
+			height: 67%;
 			/*background: #ACECF6;*/
 		}
 		.div_footer{
 			width: 100%;
 			height: 7%;
-			background: black;
+			background: #525252;
+			color: white;
 		}
 		.div_left{
 			width: 10%;
@@ -450,7 +448,7 @@ background-size: 300px 100px;
 		}
 		#li_2{
 			width: 220px;
-			background: #ECECEC;
+			background: #D1D0D0;
 			border-bottom: 0px;
 		}
 		#li_3{
@@ -462,18 +460,47 @@ background-size: 300px 100px;
 
 		}
 		.fa.user{
-			color: #068FB6;
+			color: black;
 			font-size: 25px;
 
 		}
 		</style>
-
+		<style type="text/css">
+			.item{
+				box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+				width: 1500px;
+			}
+			.item:hover{
+				box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+				border: 1px double black;
+		 		font-weight: bold;
+		 		background: #E7FAFA;
+			}
+			table{
+				border-spacing: 20px;
+				width: 100%;
+			}
+			.a_detail{
+				text-decoration: none;
+				color: black;
+			}
+			.sp_item_price{
+				color: red;
+			}
+			.img_product{
+				width: 240px;
+				height: 320px;
+			}
+		</style>
 </head>
 <body>
 <div class="div_tong">
 	<div class="div_top" style="">
 		<a href="#">
-			<div class="div_left">
+			<div class="div_left" >
+				<label>
+					<a href="index.php?module=home&action=home"></a>
+				</label>
 			
 			</div>
 		</a>
@@ -491,13 +518,13 @@ background-size: 300px 100px;
 						<a class="a_cart" href="index.php?module=invoice&action=cart" style="text-decoration: none;color: black;">Giỏ hàng
 							<?php 
 								$total_quantity = 0;
-								if (isset($_SESSION['user'])) {
+								// if (isset($_SESSION['user'])) {
 									if (isset($_SESSION['cart'])) {
-									foreach ($_SESSION['cart'] as $id => $quantity) {
+									foreach ($_SESSION['cart'] as $key => $quantity) {
 										$total_quantity += $quantity;
 									}
 								}
-								}
+								// }
 								echo "<span style='color:red;font-size:18px;'>$total_quantity</span>";
 							 ?>
 						</a>
@@ -507,7 +534,7 @@ background-size: 300px 100px;
 					<?php 
 				if (!isset($_SESSION['user'])) {
 					echo "<button class='hvr-underline-reveal' type='submit' name='btn_login'><a style='text-decoration: none;color: black;' href='index.php?module=common&action=login'>Đăng nhập</a></button>";
-					echo "<button class='hvr-underline-reveal' type='submit' name=''><a style='text-decoration: none;color: black;' href='index.php?module=common&action=login'>Đăng kí</a></button>";
+					echo "<button class='hvr-underline-reveal' type='submit' name=''><a style='text-decoration: none;color: black;' href='index.php?module=common&action=register'>Đăng kí</a></button>";
 				     }	
 				else if(isset($_SESSION['user'])){
 						echo "<a style='text-decoration-line: none;' href='profile'>"."<span class='sp_name_1'>".'<i class="fa fa-user-circle-o user"></i>'.''.'&nbsp'.$_SESSION['user']['name']."</span>"."</a>";
@@ -538,27 +565,27 @@ background-size: 300px 100px;
 			</li>
 			
 	      <li class="<?php if($action == "product_trousers") echo "active" ?>">
-	      		<a class="the_a" href="index.php?module=products&action=all_fashion_men"><span class="span_list" style="line-height: 55px;">Thời Trang Nam</span><i id="fa_1" class="fa fa-angle-down"></i></a>	
+	      		<a class="the_a" href="#"><span class="span_list" style="line-height: 55px;">Thời Trang Nam</span><i id="fa_1" class="fa fa-angle-down"></i></a>	
         <ul>
           <li>
-            <a class="the_a" href="#"><span class="span_list" style="line-height: 55px;">Quần Jean</span></a>
+            <a class="the_a" href="index.php?module=products&action=product_menfashion"><span class="span_list" style="line-height: 55px;">Quần Jean</span></a>
           </li>
           <li>
-            <a class="the_a" href="#"><span class="span_list" style="line-height: 55px;">Áo Sơ Mi</span></a>
+            <a class="the_a" href="index.php?module=products&action=shirt"><span class="span_list" style="line-height: 55px;">Áo Sơ Mi</span></a>
           </li>
            <li>
-            <a class="the_a" href="#"><span class="span_list" style="line-height: 55px;">Áo Trắng</span></a>
+            <a class="the_a" href="index.php?module=products&action=coat"><span class="span_list" style="line-height: 55px;">Áo Khoác</span></a>
           </li>
         </ul>
       </li>
       		<li  class="<?php if($action == "product_shirt") echo "active" ?>">
-				<a class="the_a" href="index.php?module=products&action=product_shirt"><span class="span_list" style="line-height: 55px;">Thời Trang Nữ</span><i id="fa_1" class="fa fa-angle-down"></i></a>
+				<a class="the_a" href="#"><span class="span_list" style="line-height: 55px;">Thời Trang Nữ</span><i id="fa_1" class="fa fa-angle-down"></i></a>
 				<ul>
 		          <li>
-		            <a class="the_a" href=""><span class="span_list" style="line-height: 55px;">Áo Sơ Mi Nữ</span></a>
+		            <a class="the_a" href="index.php?module=products&action=shirt_women"><span class="span_list" style="line-height: 55px;">Áo Sơ Mi Nữ</span></a>
 		          </li>
 		          <li>
-		            <a class="the_a" href="#"><span class="span_list" style="line-height: 55px;">Áo Thun</span></a>
+		            <a class="the_a" href="index.php?module=products&action=tshirt_women"><span class="span_list" style="line-height: 55px;">Áo Thun</span></a>
 		          </li>
        		 </ul>
 			</li>
@@ -580,10 +607,122 @@ background-size: 300px 100px;
 		include("layout/banner.php");
 	 ?>
 	 <div class="div_product">
+	 	<p style="color: black;background: red;height: 40px;width: 50%;margin: auto;text-align: center;font-size: 25px;line-height: 40px;font-family: cursive;border-radius: 10px;">Sản Phẩm Mới Nhất</p><br>
+	 	<table style="text-align: center;">
+	 		<?php 
+	 		$sql = "SELECT * FROM product ORDER BY id  DESC LIMIT 0,5";
+ 	$result = mysqli_query($conn,$sql);
+ 	if ($result == false) {
+ 		echo "Error :".mysqli_error($conn);
+ 		}
+ 				$total = mysqli_num_rows($result);
+ 				$count = 0;
+ 				while($count != $total){
+ 					echo "<tr class='item1'>";
 
-	 	
-	
+ 						while($row = mysqli_fetch_assoc($result)){
+ 							$count ++;
+ 							$id = $row['id'];
+ 							echo "<td class='item'>";
+ 								echo "<a class='a_detail' href='index.php?module=products&action=detail_product&id=$id'>";
+ 								echo "<span class='sp_item_name'>".$row['name']."</span>";
+
+ 								echo "<br>";
+ 								$sql2 = "SELECT id,url FROM image_product WHERE id = $id";
+ 								$result2 = mysqli_query($conn,$sql2);
+ 								$row2 = mysqli_fetch_assoc($result2);
+ 								$url = $row2['url'];
+ 								echo "<img class='img_product' src='$url'>";
+ 								echo "</a>";
+ 								echo "<br>";
+ 								echo "<span class='sp_item_price'>".$row['price']."</span>"."  VND";
+ 								
+ 							echo "</td>";
+ 							
+ 							if($count % 5 == 0) break;
+ 						}
+ 					echo "</tr>";
+ 				}
+	 ?>
+	 	</table>
+	 	<br>
+	 	<p style="color: black;background: #BE4141;height: 40px;width: 50%;margin: auto;text-align: center;font-size: 25px;line-height: 40px;font-family: cursive;border-radius: 10px;">Quần Jean Nam</p><br>
+		<table style="text-align: center;">
+	 		<?php 
+	 		$sql = "SELECT * FROM product WHERE id_type = '4' ORDER BY id  DESC LIMIT 0,5";
+ 	$result = mysqli_query($conn,$sql);
+ 	if ($result == false) {
+ 		echo "Error :".mysqli_error($conn);
+ 		}
+ 				$total = mysqli_num_rows($result);
+ 				$count = 0;
+ 				while($count != $total){
+ 					echo "<tr class='item1'>";
+
+ 						while($row = mysqli_fetch_assoc($result)){
+ 							$count ++;
+ 							$id = $row['id'];
+ 							echo "<td class='item'>";
+ 								echo "<a class='a_detail' href='index.php?module=products&action=detail_product&id=$id'>";
+ 								echo "<span class='sp_item_name'>".$row['name']."</span>";
+
+ 								echo "<br>";
+ 								$sql2 = "SELECT id,url FROM image_product WHERE id = $id";
+ 								$result2 = mysqli_query($conn,$sql2);
+ 								$row2 = mysqli_fetch_assoc($result2);
+ 								$url = $row2['url'];
+ 								echo "<img class='img_product' src='$url'>";
+ 								echo "</a>";
+ 								echo "<br>";
+ 								echo "<span class='sp_item_price'>".$row['price']."</span>"."  VND";
+ 								
+ 							echo "</td>";
+ 							
+ 							if($count % 5 == 0) break;
+ 						}
+ 					echo "</tr>";
+ 				}
+	 ?>
+	 	</table>
+	 	<br>
+	 	<p style="color: black;background: #2257F0;height: 40px;width: 50%;margin: auto;text-align: center;font-size: 25px;line-height: 40px;font-family: cursive;border-radius: 10px;">Quần Sơ Mi Nam</p><br>
+		<table style="text-align: center;">
+	 		<?php 
+	 		$sql = "SELECT * FROM product WHERE id_type = '5' ORDER BY id  DESC LIMIT 0,5";
+ 	$result = mysqli_query($conn,$sql);
+ 	if ($result == false) {
+ 		echo "Error :".mysqli_error($conn);
+ 		}
+ 				$total = mysqli_num_rows($result);
+ 				$count = 0;
+ 				while($count != $total){
+ 					echo "<tr class='item1'>";
+
+ 						while($row = mysqli_fetch_assoc($result)){
+ 							$count ++;
+ 							$id = $row['id'];
+ 							echo "<td class='item'>";
+ 								echo "<a class='a_detail' href='index.php?module=products&action=detail_product&id=$id'>";
+ 								echo "<span class='sp_item_name'>".$row['name']."</span>";
+
+ 								echo "<br>";
+ 								$sql2 = "SELECT id,url FROM image_product WHERE id = $id";
+ 								$result2 = mysqli_query($conn,$sql2);
+ 								$row2 = mysqli_fetch_assoc($result2);
+ 								$url = $row2['url'];
+ 								echo "<img class='img_product' src='$url'>";
+ 								echo "</a>";
+ 								echo "<br>";
+ 								echo "<span class='sp_item_price'>".$row['price']."</span>"."  VND";
+ 								
+ 							echo "</td>";
+ 							
+ 							if($count % 5 == 0) break;
+ 						}
+ 					echo "</tr>";
+ 				}
+	 ?>
+	 	</table>
 	<?php 
 		require_once("layout/footer.php");
 	 ?>
-	

@@ -21,7 +21,9 @@
 		
 		}
 	}
-	
+	if (!isset($name)) {
+		header("Location:index.php?module=home&action=home");
+	}
  ?>
 <?php 
 	require_once("layout/header.php");
@@ -50,8 +52,8 @@
  		height: 100px;
  	}
  	.avatar_view{
- 		width: 380px;
- 		height: 370px;
+ 		width: 300px;
+ 		height: 400px;
  		max-width: 380px;
  		margin-left: 40px;
  		max-height: 370px;
@@ -142,19 +144,35 @@
 		  <img class="avatar_view"  src="<?php echo $url2 ?>" id="expandedImg" style="border: 1px solid black;">
 		  <div id="imgtext"></div>
 		</div>
-		
+
 		<div class="row"><h5>Ảnh Chi Tiết Sản Phẩm :</h5>
 		  <div style="float: left;margin-left:-10px;padding-top: 0px;border: 1px solid #DEA7A7;" class="column" >
-		    <img src="<?php echo $url3; ?>"   style="width:100px;height: 100px;" onclick="myFunction(this);">
+		     <?php 
+		   		if (isset($url3)) {
+		   			echo "<img src='$url3'   style='width:100px;height: 100px;' onclick='myFunction(this);'>";
+		   		}
+		    ?>
 		  </div>
 		  <div style="float: left;margin-left:10px;padding-top: 0px;border: 1px solid #DEA7A7;" class="column">
-		    <img src="<?php echo $url4; ?>"  style="width:100px;height: 100px;" onclick="myFunction(this);">
+		     <?php 
+		   		if (isset($url4)) {
+		   			echo "<img src='$url4'   style='width:100px;height: 100px;' onclick='myFunction(this);'>";
+		   		}
+		    ?>
 		  </div>
 		  <div style="float: left;margin-left:10px;padding-top: 0px;border: 1px solid #DEA7A7;" class="column">
-		    <img src="<?php echo $url5; ?>"  style="width:100px;height: 100px;" onclick="myFunction(this);">
+		     <?php 
+		   		if (isset($url5)) {
+		   			echo "<img src='$url5'   style='width:100px;height: 100px;' onclick='myFunction(this);'>";
+		   		}
+		    ?>
 		  </div>
 		  <div style="float: left;margin-left:10px;padding-top: 0px;border: 1px solid #DEA7A7;" class="column">
-		    <img src="<?php echo $url6; ?>"  style="width:100px;height: 100px;" onclick="myFunction(this);">
+		   <?php 
+		   		if (isset($url6)) {
+		   			echo "<img src='$url6'   style='width:100px;height: 100px;' onclick='myFunction(this);'>";
+		   		}
+		    ?>
 		  </div>
 		 
 		</div>
@@ -193,6 +211,22 @@
  		<form method="POST">
  		<label>
  			Size :
+ 			<select name="sz">
+ 				<?php if ($type == 4 || $type == 8): ?>
+ 					<option value="28">28</option>
+ 					<option value="29">29</option>
+ 					<option value="30">30</option>
+ 					<option value="31">31</option>
+ 					<option value="32">32</option>
+ 				<?php endif ?>
+ 				<?php if ($type == 5 || $type == 7): ?>
+ 					<option value="S">S</option>
+ 					<option value="M">M</option>
+ 					<option value="L">L</option>
+ 					<option value="XL">XL</option>
+ 					<option value="XXL">XXL</option>
+ 				<?php endif ?>
+ 			</select>
  		</label>
  		<br><br>
  			<?php 
@@ -277,7 +311,7 @@
  			</span>
  		</label>
  		<br><br>
- 		
+
  	</div>
  	
  </div>

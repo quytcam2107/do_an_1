@@ -19,6 +19,7 @@
 			$trademark = $row['id_trademark'];
 		}
 	}
+	
 	else{
 		header("location:index.php?module=products&action=list");
 	}
@@ -50,6 +51,7 @@
 			header("location:index.php?module=products&action=edit_img2&id=$id");
 		}
 	}
+	
 ?>	
 <?php 
 	$tittle = "Sửa Sản Phẩm";
@@ -180,7 +182,7 @@
  				<option value="6" <?php if($color == 6) echo "selected"; ?>>Xanh Lá Cây</option>
  				<option value="7" <?php if($color == 7) echo "selected"; ?>>Trắng</option>
  				<option value="8" <?php if($color == 8) echo "selected"; ?>>Tím</option>
- 				<option value="9" <?php if($color == 9) echo "selected"; ?>>Đen</option>
+ 				<option value="9" <?php if($color == 9) echo "selected"; ?>>Bạc</option>
  			</select>
  		</label>
  		<label id="lb_status">

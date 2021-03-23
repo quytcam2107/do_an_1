@@ -1,6 +1,6 @@
 <?php 
 $error ="";
-	$sql = "SELECT id,name,image_product,price FROM product WHERE id_type = '2'";
+	$sql = "SELECT id,name,price FROM product WHERE id_type = '4'";
 	if (isset($_GET['btn_search'])) {
 		$keyword = $_GET['keyword'];
 		$sql.= " AND name LIKE '%$keyword%'";
@@ -29,14 +29,13 @@ $error ="";
  		
  	}
   	.product-shirt_top table{
- 		width: 100%;
+ 		width: 1100px;
+ 		border-spacing: 10px;
  		text-align: center;	
- 		
  	}
  	
   	.product-shirt_top table .item{
-  		max-width: 50px;
- 		
+  		max-width: 20px;
  		box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
  	}
  	.product-shirt_top table .item:hover{
@@ -47,14 +46,14 @@ $error ="";
  	}
  	img{
  		width: 200px;
- 		height: 250px;
+ 		height: 240px;
 
  	}
  	.sp_item_name{
  		
  	}
  	.sp_item_price{
- 		color: red;
+ 		color: red; 
  	}
  	form{
  		width: 200px;
@@ -75,14 +74,14 @@ $error ="";
  <br>
 <form method="GET">
 	<input type="hidden" name="module" value="products">
-	<input type="hidden" name="action" value="product_shirt">
+	<input type="hidden" name="action" value="product_menfashion">
 	<input type="text" name="keyword" placeholder="Tìm Kiếm" size="50" style="padding-bottom: 10px;padding-top: 10px;"><br><br>
 	<button type="submit" name="btn_search">Tìm Kiếm</button>
 </form>
 <br>
-<p style="color: black;background: #F76DC5;height: 50px;width: 50%;margin: auto;text-align: center;font-size: 25px;line-height: 40px;font-family: cursive;border-radius: 10px;">Áo Nữ</p><br>
+<p style="color: black;background: #F76DC5;height: 40px;width: 50%;margin: auto;text-align: center;font-size: 25px;line-height: 40px;font-family: cursive;border-radius: 10px;">Quần Jean</p><br>
  	<div class="product-shirt_top">
- 		<table>
+ 		<table border="0">
  			<?php 
  				$total = mysqli_num_rows($result);
  				$count = 0;
@@ -96,7 +95,10 @@ $error ="";
  								echo "<a class='a_detail' href='index.php?module=products&action=detail_product&id=$id'>";
  								echo "<span class='sp_item_name'>".$row['name']."</span>";
  								echo "<br>";
- 								$url = $row['image_product'];
+ 								$sql2 = "SELECT id,url FROM image_product WHERE id = $id";
+ 								$result2 = mysqli_query($conn,$sql2);
+ 								$row2 = mysqli_fetch_assoc($result2);
+ 								$url = $row2['url'];
  								echo "<img src='$url'>";
  								echo "<br>";
  								echo "<span class='sp_item_price'>".$row['price']."</span>"." VND";

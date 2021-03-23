@@ -1,58 +1,57 @@
-
 <?php 
-	$user = $password = $error = "" ;
-	if (isset($_POST['btn_login'])) {
-		$user = $_POST['user'];
-		$password = md5($_POST['password']);
+	$name = $phone = $email = $pw = $gender =$date = $notifical = "";
+	if (isset($_POST['btn'])) {
+		$name = $_POST['name'];
+		$phone = $_POST['phone'];
+		$email = $_POST['email'];
+		$pw = md5($_POST['pw']);
+		$gender = $_POST['gender'];
+		$date = $_POST['dob'];
+		$address =$_POST['address'];
+
 		$conn = mysqli_connect('localhost','root','','project_2');
-		if(!$conn) die("ket noi that bai".mysqli_connect_eror()); 
-		$sql = "SELECT id,name FROM customer WHERE (phone = '$user' OR email = '$user') AND password = '$password'";
+		if(!$conn) die("ket noi that bai".mysqli_connect_eror());
+		$sql = "INSERT INTO customer VALUES(NULL,'$name','$phone','$email','$gender','$date','$address','$pw')";
 		$result = mysqli_query($conn,$sql);
 		if ($result == false) {
 			echo "ERROR :".mysqli_error($conn);
-		}
-		else{
-			if(mysqli_num_rows($result) == 1){
-				$row = mysqli_fetch_assoc($result);
-				$_SESSION['user']['id'] = $row['id'];
-				$_SESSION['user']['name'] = $row['name'];
-				header("location:index.php?module=home&action=home");
-			}
-			else{
-				$error = "Tài khoản hoặc mật khẩu không chính xác";
-			}
+		}else{
+			$notifical = "Đăng kí thành công !";
 		}
 	}
+
  ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Đăng Nhập</title>
+	<title>Đăng kí</title>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">	
-	<link rel="stylesheet" href="../publish/font_awesome/font-awesome-4.7.0/css/font-awesome.min.css">	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="shortcut icon" type="image/jpg" href="image/logo2.png"/>
+	<link rel="stylesheet" href="../publish/font_awesome/font-awesome-4.7.0/css/font-awesome.min.css">
 	<style type="text/css">
+		<style type="text/css">
+		*{
+			font-family: Roboto-Regular,'Helvetica Neue',Helvetica,Tahoma,Arial,Sans-serif;
+		}
 		body{
-			margin: 0;
-			padding: 0;
+			margin: 0px;
+			padding: 0px;
 			box-sizing: border-box;
 			color:black;
-			position: absolute;
-			left: 0px;
-			top: 0px;
 			font-family: Roboto-Regular,'Helvetica Neue',Helvetica,Tahoma,Arial,Sans-serif;
 		}
 		.div_tong{
-			width: 1550px;
-			height: 750px;
+			width: 1520px;
+			height: 1050px;
 			background: white;
 			position: absolute;
-			left: -10px;
+			left: 0px;
+			top: 0px;
 		}
 		.div_top{
 			width: 100%;
-			height: 8%;
+			height: 60px;
 			/*background: #F58181;*/
 		}
 		/*.div_menu{
@@ -71,13 +70,13 @@
 		}*/
 		.div_product{
 			width: 100%;
-			height: 67%;
+			height: 80%;
 			background: url(../publish/source3.gif);
 			background-position: center center;
 		}
 		.div_footer{
 			width: 100%;
-			height: 25%;
+			height: 15%;
 			background: black;
 		}
 		.div_left{
@@ -191,7 +190,7 @@
 			font-size: 18px;
 			color: black;
 			position: absolute;
-			top: 16px;
+			top: 22px;
 
 		}
 		.span1:hover{
@@ -200,7 +199,7 @@
 		.div_form{
 			padding-left: 250px;
 			width: 500px;
-			height: 400px;
+			height: 700px;
 			/*background: url(../publish/source3.gif);*/
 			background: #B5B0B0;
 			
@@ -287,7 +286,17 @@
       	font-size: 21px;
       	border-radius: 5px 10px 4px 8px;
       }
-      .div_footer{
+	</style>
+	<style type="text/css">
+		input{
+			padding-top: 10px;padding-bottom: 10px;
+		}
+		button{
+			padding-top: 10px;padding-bottom: 10px;margin-left: 55px;
+			padding-left: 30px;
+			padding-right: 30px;
+		}
+		.div_footer{
 		background: #525252;
 		position: relative;
 	}
@@ -316,38 +325,6 @@
 		color: white;
 	}
 	</style>
-	<script type="text/javascript">
-		function validateForm(){
-		var vUser = document.getElementById('user');
-		var vPw =  document.getElementById('pw');
-		var rg_phone = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
-		var text;
-
-		var user = vUser.value.trim();
-		var pw = vPw.value.trim();
-		if (user == "") {
-			text = "Tên tài khoản không được để trống";
-			document.getElementById('error1').innerHTML = text;
-			return false
-		}
-
-		if (vPw == "") {
-			text = "Mật khẩu không được để trống";
-			document.getElementById('error2').innerHTML = text;
-			return false
-		}
-		else if (pw.length < 8) {
-			vPw.focus();
-			// alert("Mat Khau Toi Thieu 8 Ki Tu");
-			text = "Mật Khẩu Tối Thiểu 8 Kí Tự";
-			document.getElementById("error2").innerHTML = text;
-			return false;
-		}
-		
-	return true;
-	}
-	</script>
-	
 </head>
 <body>
 <div class="div_tong">
@@ -364,7 +341,7 @@
 			</div>
 			<div class="div_center_right" >
 				<label>
-					<a class="a_1" href="index.php?module=invoice&action=cart"><span class="span1"><i style="font-size: 28px;color: red;" id="i_1" class="fa fa-cart-plus">&nbsp</i>Giỏ hàng  </span>&nbsp
+					<a class="a_1" href="#"><span class="span1"><i style="font-size: 28px;color: red;" id="i_1" class="fa fa-cart-plus">&nbsp</i>Giỏ hàng  </span>
 						<?php 
 								$total_quantity = 0;
 								// if (isset($_SESSION['user'])) {
@@ -436,25 +413,57 @@
 		
 		</div>
 		<div class="div_form">
+			<h3>
+				<?php 
+					echo $notifical;
+					if ($notifical != "") {
+						echo "<a href=index.php?module=common&action=login>Đăng Nhập</a>";
+					}
+				 ?>
+			</h3>
 		<form method="POST" onsubmit="return validateForm()">
-			<?php 
-				echo "<p>$error</p>";
-			 ?>
-			<label id="lb_account">
-				Tài Khoản :<br><br>
-				<input style="padding-top: 10px;padding-bottom: 10px;" id="user" type="text" name="user" placeholder="Email Hoặc Số Điện Thoại" size="30">
-				<span id="error1"></span>
+			<label>
+				Họ tên :<br>
+			<input type="text" name="name" placeholder="Hãy nhập họ tên" size="30"><br><br>
+		</label>
+		<label>
+			Số điện thoại :<br>
+			<input type="tel" name="phone" placeholder="Hãy nhập số điện thoại" size="30"><br><br>
+		</label>
+		<label>
+			Email :<br>
+			<input type="email" name="email" placeholder="Hãy nhập Email" size="30"><br><br>
+		</label>
+		<label>
+			Mật khẩu :<br>
+			<input type="password" name="pw" placeholder="Mật khẩu" size="30"><br><br>
+		</label>
+		<label>
+			Nhập lại mật khẩu :<br>
+			<input type="password" name="rpw" placeholder="Nhập lại Mật khẩu" size="30"><br><br>
+		</label>
+		<label>
+			Giới tính :<br><br>
+			<input type="radio" name="gender" value="1" checked> Nam
+			<label>
+				<input type="radio" name="gender" value="0"> Nữ
 			</label>
-			<br><br>
-			<label id="">
-				Mật Khẩu :<br><br>
-				<input style="padding-top: 10px;padding-bottom: 10px;" type="password" name="password" id="pw" placeholder="Mật Khẩu"  size="30">
-				<span id="error2"></span>
-			</label>
-			<br><br>
-			<button style="padding-top: 10px;padding-bottom: 10px;margin-left: 55px;" type="submit" name="btn_login">Đăng Nhập</button>
+			
+		</label>
+		<br><br>	
+		<label>
+			Ngày Sinh :
+			<input type="date" name="dob">
+			<br>
+		</label>
+		<label>
+			Địa chỉ :
+			<input type="text" name="address" placeholder="Nhập địa chỉ">
+		</label>
+		<br>
+		<button type="submit" name="btn">Đăng kí</button>
 		</form><br>
-		<a href="index.php?module=common&action=register">Chưa có tài khoản đăng kí tại Đây</a>
+		<a href="index.php?module=common&action=login">Đã có tài khoản Đăng nhập tại đây</a>
 		</div>
 	</div>
 	<div class="div_footer" style="color: white">
@@ -467,7 +476,7 @@
 		<a class="ft_1_con" href="https://www.facebook.com/quat2107/"><i class="fa fa-facebook-square" style="font-size: 25px;color: #0F29ED;" aria-hidden="true"></i>&nbsp&nbspFacebook</a>
 		<a class="ft_1_con2" href="https://www.facebook.com/quat2107/"><i class="fa fa-instagram" style="font-size: 25px;color: #F16934;" aria-hidden="true"></i>&nbsp&nbspInstagram</a>
 	</div>
+	
 </div>
 </body>
 </html>
-
