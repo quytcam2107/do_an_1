@@ -29,7 +29,7 @@
 		.div-container{
 			background: white;
 			width: 1200px;
-			height: 153vh;
+			height: auto;
 			margin: auto;
 		}
 		.header{
@@ -39,14 +39,14 @@
 		}
 		.div-menu{
 			width: 250px;
-			height: 146vh;
+			height: auto;
 			float: left;
 			border-left: 3px solid #DBB5B5;
 		}
 		.div-content{
 			
 			width: 950px;
-			height: 100vh;
+			height: auto;
 			float: left;
 
 		}
@@ -69,7 +69,7 @@
 		}
 		.div-menu ul{
 			background: white;
-			height: 141vh;
+			height: 153vh;
 			list-style-type: none;
 			/*border-right: 2px solid black;*/
 			background: #A7A0A0;

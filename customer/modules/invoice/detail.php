@@ -1,5 +1,6 @@
 
-<?php  
+<?php 
+date_default_timezone_set('Asia/Ho_Chi_Minh');
 if (!isset($_GET['id'])) {
 	header("location:index.php");
 }
@@ -29,7 +30,7 @@ if (!isset($_GET['id'])) {
 		height: 10px;
 	}
 	img{
-		width: 220px;
+		width: 150px;
 		height: 200px;
 	}
 </style>

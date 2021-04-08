@@ -34,7 +34,8 @@
 		<?php 
 			if (mysqli_num_rows($result) == 0) {
 				echo "<h2>Chưa có thông tin</h2>";
-			}else{
+			}
+			else{
 				foreach ($result as $row) {
 					$id_invoice = $row['id'];
 					echo "<tr>";
@@ -48,7 +49,10 @@
 					echo "<br>";
 					echo "Số điện thoại :".$row['phone'];
 					echo "</td>";
-					echo "<td>".$row['create_at']."</td>";
+					// echo "<td>".$row['create_at']."</td>";
+					echo "<td>";
+					echo date_format(date_create($row['create_at']), 'd-m-Y H:i:s');
+					echo "</td>";
 					echo "<td>".$row['total_money']."</td>";
 					echo "<td>";
 						$arrStatus = array(0=> "Chưa duyệt",1=> "Đã duyệt",2=>"Thành công",3=>"Đã huỷ");

@@ -18,8 +18,11 @@
 			$size = $row['id_size'];
 			$trademark = $row['id_trademark'];
 		}
+		else{
+			header("Location:index.php?module=products&action=list");
+		}
 	}
-	
+
 	else{
 		header("location:index.php?module=products&action=list");
 	}
@@ -183,6 +186,8 @@
  				<option value="7" <?php if($color == 7) echo "selected"; ?>>Trắng</option>
  				<option value="8" <?php if($color == 8) echo "selected"; ?>>Tím</option>
  				<option value="9" <?php if($color == 9) echo "selected"; ?>>Bạc</option>
+ 				<option value="9" <?php if($color == 10) echo "selected"; ?>>Hồng</option>
+ 				<option value="9" <?php if($color == 11) echo "selected"; ?>>Ngẫu Nhiên</option>
  			</select>
  		</label>
  		<label id="lb_status">
@@ -226,11 +231,23 @@
  		<label id="lb_size">
  			<i class="fas fa-text-width" style="font-size: 20px;"></i>  Kích Cỡ :	
  			<select class="sl_edit" name="size" style="padding: 10px 10px;margin-left: 85px;">
- 				<option value="1" <?php if($size == 1) echo "selected"; ?>>S</option>
- 				<option value="2" <?php if($size == 2) echo "selected"; ?>>M</option>
- 				<option value="3" <?php if($size == 3) echo "selected"; ?>>L</option>
- 				<option value="4" <?php if($size == 4) echo "selected"; ?>>XL</option>
- 				<option value="5" <?php if($size == 5) echo "selected"; ?>>XXL</option>
+ 				<?php 
+ 					$sql = "SELECT id,name_size FROM size";
+ 					$result = mysqli_query($conn,$sql);
+ 					if ($result == false) {
+ 						echo "ERROR :".mysqli_error($conn);
+ 					}
+ 					elseif (mysqli_num_rows($result)  > 0) {
+ 						foreach ($result as $row) {
+ 							$id_trademark_edit = $row['id'];
+ 							if($id_trademark_edit == $trademark) $selected = "selected";
+ 							else $selected = "";
+ 							echo "<option value='$id_trademark_edit' $selected>";
+ 								echo $row['name_size'];
+ 							echo "</option>";
+ 						}
+ 					}
+ 				 ?>
  			</select>
  		</label>
  		<label id="lb_trademark">
@@ -291,3 +308,4 @@
  <?php 
 	require_once("layout/footer.php");
  ?>
+ <?php 

@@ -74,6 +74,7 @@ $tittle = "Giỏ Hang";
  		padding-bottom: 10px;
  		border-radius: 5px;
  		background: #F2F2F2;
+ 		
  	}
  	.btn_pay1{
  		background: #4372FA;
@@ -94,14 +95,27 @@ $tittle = "Giỏ Hang";
  		border-radius: 5px;
  		background: linear-gradient(#CABDBD, #9DF0F5);
  	}
+ 	.a_history{
+ 		text-decoration: none;
+ 		font-size: 22px;
+ 	}
+ 	.a_history:hover{
+ 		font-weight: bold;
+ 	}
+ 	
  </style>
  <div class="div_cart">
+ 	<br>
+ 	<label class="lb_history">
+ 		<i style="color: #1B5CEF;font-size: 30px;" class="fa fa-history" aria-hidden="true"></i>
  		<?php 
  			if (isset($_SESSION['user']['id'])) {
- 				echo "<a href='index.php?module=invoice&action=history'>Lịch sử mua hàng</a>";
+ 				echo "<a class='a_history' href='index.php?module=invoice&action=history'>Lịch sử mua hàng</a>";
  			}
 
  		 ?>
+ 	</label>
+ 		
  		<table>
  			<tr>
  				<th>STT</th>
@@ -212,7 +226,7 @@ $tittle = "Giỏ Hang";
  								echo "</button>";
  								}
  								else{
- 									echo "<button type='submit' name='btn_pay'>";
+ 									echo "<button type='submit' name='btn_pay' class='btn_pay'>";
  									echo "Đặt hàng";
  								echo "</button>";
  								}

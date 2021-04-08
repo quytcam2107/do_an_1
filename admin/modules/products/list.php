@@ -37,7 +37,7 @@
 
  	.div_list_products{
  		width:100%;
- 		height: 1050px;
+ 		height: auto;
  		
  		/*overflow: auto;*/
  		/*position: fixed;*/

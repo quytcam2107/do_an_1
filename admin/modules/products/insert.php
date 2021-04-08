@@ -163,6 +163,8 @@
  				<option value="7">Trắng</option>
  				<option value="8">Tím</option>
  				<option value="9">Bạc</option>
+ 				<option value="10">Hồng</option>
+ 				<option value="11">Ngẫu Nghiên</option>
  			</select>
  		</label>
  		<label id="lb_status">

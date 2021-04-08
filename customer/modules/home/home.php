@@ -46,14 +46,15 @@
 
 		.div_banner{
 			width: 100%;
-			height: 20%;
-			background: white;
+			height: 15%;
+			background: #CAC6C9;
 			position: relative;
 		}
 		.div_product{
+			padding-top: 5px;
 			width: 100%;
-			height: 67%;
-			/*background: #ACECF6;*/
+			height: 72%;
+			background: #E2E1E2;
 		}
 		.div_footer{
 			width: 100%;
@@ -74,7 +75,7 @@
 		.div_center{
 			width: 60%;
 			height: 100%;
-		/*	background: #E8AC1B;*/
+		
 			float: left;
 			position: relative;
 		}
@@ -469,12 +470,13 @@ background-size: 300px 100px;
 			.item{
 				box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
 				width: 1500px;
+				border: 1px solid #9C9999;
 			}
 			.item:hover{
 				box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 				border: 1px double black;
 		 		font-weight: bold;
-		 		background: #E7FAFA;
+		 		background: white;
 			}
 			table{
 				border-spacing: 20px;
@@ -492,6 +494,52 @@ background-size: 300px 100px;
 				height: 320px;
 			}
 		</style>
+		<style type="text/css">
+			.example1 {
+ height: 50px;	
+ overflow: hidden;
+ position: relative;
+}
+.example1 .h5 {
+ font-size: 20px;
+ color: #CD3261;
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ margin: 0;
+ line-height: 50px;
+ text-align: center;
+ /* Starting position */
+ -moz-transform:translateX(100%);
+ -webkit-transform:translateX(100%);	
+ transform:translateX(100%);
+ /* Apply animation to this element */	
+ -moz-animation: example1 5s linear infinite;
+ -webkit-animation: example1 5s linear infinite;
+ animation: example1 12s linear infinite;
+}
+/* Move it (define the animation) */
+@-moz-keyframes example1 {
+ 0%   { -moz-transform: translateX(100%); }
+ 100% { -moz-transform: translateX(-100%); }
+}
+@-webkit-keyframes example1 {
+ 0%   { -webkit-transform: translateX(100%); }
+ 100% { -webkit-transform: translateX(-100%); }
+}
+@keyframes example1 {
+ 0%   { 
+ -moz-transform: translateX(100%); /* Firefox bug fix */
+ -webkit-transform: translateX(100%); /* Firefox bug fix */
+ transform: translateX(100%); 		
+ }
+ 100% { 
+ -moz-transform: translateX(-100%); /* Firefox bug fix */
+ -webkit-transform: translateX(-100%); /* Firefox bug fix */
+ transform: translateX(-100%); 
+ }
+}
+		</style>
 </head>
 <body>
 <div class="div_tong">
@@ -505,10 +553,9 @@ background-size: 300px 100px;
 			</div>
 		</a>
 		<div class="div_center" >
-			<input class="input1" type="text" name="#" placeholder="Bạn cần tìm gì ..." size="50">	
-			 <form method="POST">
-			 	<button name="btn" class="hvr-shutter-in-horizontal" type="submit" >Tìm kiếm</button>
-			 </form>	
+			<div class="example1">
+			<p class="h5" style="font-family: monospace;"><i class="fa fa-globe" aria-hidden="true" style="font-size: 25px;color: #153FF4;"></i>&nbspĐịa chỉ :&nbsp&nbsp<i class="fa fa-map-marker" aria-hidden="true" style="color: red;font-size: 20px;">&nbsp</i>Chung cư CT3 - phường Yên Nghĩa - quận Hà Đông - Hà Nội</p>
+</div>
 		</div>
 		<div class="div_right">
 			<ul id="ul_first">
@@ -540,7 +587,7 @@ background-size: 300px 100px;
 						echo "<a style='text-decoration-line: none;' href='profile'>"."<span class='sp_name_1'>".'<i class="fa fa-user-circle-o user"></i>'.''.'&nbsp'.$_SESSION['user']['name']."</span>"."</a>";
 						echo "<ul class='ul_top_1'>";
 							echo "<li class='li_top_1'>";
-								echo "<a style='text-decoration-line: none;' style href='change_profile'>Thay đổi thông tin</a>";
+								echo "<a style='text-decoration-line: none;'  href='index.php?module=common&action=change_profile'>Thay đổi thông tin</a>";
 							echo "</li>";
 						echo "</ul>";
 				}
@@ -564,7 +611,7 @@ background-size: 300px 100px;
 				<a class="the_a" href="index.php?module=home&action=home"><span class="span_list" style="line-height: 55px;">Trang Chủ</span></a>
 			</li>
 			
-	      <li class="<?php if($action == "product_trousers") echo "active" ?>">
+	      <li class="<?php if($action == "product_menfashion") echo "active" ?>">
 	      		<a class="the_a" href="#"><span class="span_list" style="line-height: 55px;">Thời Trang Nam</span><i id="fa_1" class="fa fa-angle-down"></i></a>	
         <ul>
           <li>
@@ -593,10 +640,10 @@ background-size: 300px 100px;
 				<a class="the_a" href="index.php?module=products&action=product_accessories"><span class="span_list" style="line-height: 55px;">Phụ Kiện </span><i id="fa_1" class="fa fa-angle-down"></i></a>
 				<ul>
 		          <li>
-		            <a class="the_a" href="#"><span class="span_list" style="line-height: 55px;">Phụ Kiện Nam</span></a>
+		            <a class="the_a" href="index.php?module=products&action=accessories_man"><span class="span_list" style="line-height: 55px;">Phụ Kiện Nam</span></a>
 		          </li>
 		          <li>
-		            <a class="the_a" href="#"><span class="span_list" style="line-height: 55px;">Phụ Kiện Nữ</span></a>
+		            <a class="the_a" href="index.php?module=products&action=accessories_women"><span class="span_list" style="line-height: 55px;">Phụ Kiện Nữ</span></a>
 		          </li>
        		 </ul>
 			</li>
@@ -606,8 +653,9 @@ background-size: 300px 100px;
 	<?php 
 		include("layout/banner.php");
 	 ?>
+
 	 <div class="div_product">
-	 	<p style="color: black;background: red;height: 40px;width: 50%;margin: auto;text-align: center;font-size: 25px;line-height: 40px;font-family: cursive;border-radius: 10px;">Sản Phẩm Mới Nhất</p><br>
+	 	<p style="color: black;background: red;height: 40px;width: 50%;margin: auto;text-align: center;font-size: 25px;line-height: 40px;font-family: cursive;border-radius: 10px;">Sản Phẩm Mới Nhất</p>
 	 	<table style="text-align: center;">
 	 		<?php 
 	 		$sql = "SELECT * FROM product ORDER BY id  DESC LIMIT 0,5";
@@ -635,15 +683,18 @@ background-size: 300px 100px;
  								echo "<img class='img_product' src='$url'>";
  								echo "</a>";
  								echo "<br>";
- 								echo "<span class='sp_item_price'>".$row['price']."</span>"."  VND";
+ 								echo "<span class='sp_item_price'>".number_format($row['price'],0,'','.')."</span>"."  VND";
  								
  							echo "</td>";
  							
  							if($count % 5 == 0) break;
  						}
  					echo "</tr>";
+
  				}
+ 			
 	 ?>
+	 
 	 	</table>
 	 	<br>
 	 	<p style="color: black;background: #BE4141;height: 40px;width: 50%;margin: auto;text-align: center;font-size: 25px;line-height: 40px;font-family: cursive;border-radius: 10px;">Quần Jean Nam</p><br>
@@ -674,7 +725,7 @@ background-size: 300px 100px;
  								echo "<img class='img_product' src='$url'>";
  								echo "</a>";
  								echo "<br>";
- 								echo "<span class='sp_item_price'>".$row['price']."</span>"."  VND";
+ 								echo "<span class='sp_item_price'>".number_format($row['price'],0,'','.')."</span>"."  VND";
  								
  							echo "</td>";
  							
@@ -684,11 +735,13 @@ background-size: 300px 100px;
  				}
 	 ?>
 	 	</table>
+	 	<a style="padding-left: 700px;font-size: 18px;color: #1030A5;text-decoration: none;" href="index.php?module=products&action=product_menfashion">Xem Thêm.....</a>
 	 	<br>
-	 	<p style="color: black;background: #2257F0;height: 40px;width: 50%;margin: auto;text-align: center;font-size: 25px;line-height: 40px;font-family: cursive;border-radius: 10px;">Quần Sơ Mi Nam</p><br>
+	 	<br>
+	 	<p style="color: black;background: #2257F0;height: 40px;width: 50%;margin: auto;text-align: center;font-size: 25px;line-height: 40px;font-family: cursive;border-radius: 10px;">Áo thun nữ</p><br>
 		<table style="text-align: center;">
 	 		<?php 
-	 		$sql = "SELECT * FROM product WHERE id_type = '5' ORDER BY id  DESC LIMIT 0,5";
+	 		$sql = "SELECT * FROM product WHERE id_type = '8' ORDER BY id  DESC LIMIT 0,5";
  	$result = mysqli_query($conn,$sql);
  	if ($result == false) {
  		echo "Error :".mysqli_error($conn);
@@ -713,7 +766,7 @@ background-size: 300px 100px;
  								echo "<img class='img_product' src='$url'>";
  								echo "</a>";
  								echo "<br>";
- 								echo "<span class='sp_item_price'>".$row['price']."</span>"."  VND";
+ 								echo "<span class='sp_item_price'>".number_format($row['price'],0,'','.')."</span>"."  VND";
  								
  							echo "</td>";
  							

@@ -35,7 +35,7 @@ $error ="";
   	.product-shirt_top table{
  		width: 100%;
  		text-align: center;	
- 		
+ 		margin: auto;
  	}
  	
   	.product-shirt_top table .item{

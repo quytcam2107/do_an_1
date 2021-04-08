@@ -72,7 +72,7 @@
 		.div_product{
 			width: 100%;
 			height: 67%;
-			background: url(../publish/source3.gif);
+			background: url(../publish/source.gif);
 			background-position: center center;
 		}
 		.div_footer{
@@ -327,7 +327,8 @@
 		var pw = vPw.value.trim();
 		if (user == "") {
 			text = "Tên tài khoản không được để trống";
-			document.getElementById('error1').innerHTML = text;
+			// document.getElementById('error1').innerHTML = text;
+			 alert(text);
 			return false
 		}
 
@@ -340,14 +341,60 @@
 			vPw.focus();
 			// alert("Mat Khau Toi Thieu 8 Ki Tu");
 			text = "Mật Khẩu Tối Thiểu 8 Kí Tự";
-			document.getElementById("error2").innerHTML = text;
+			// document.getElementById("error2").innerHTML = text;
+			alert(text);
 			return false;
 		}
 		
 	return true;
 	}
 	</script>
-	
+	<style type="text/css">
+		.example1 {
+			 height: 50px;	
+			 overflow: hidden;
+			 position: relative;
+			}
+			.example1 .h5 {
+			 font-size: 20px;
+			 color: #CD3261;
+			 position: absolute;
+			 width: 100%;
+			 height: 100%;
+			 margin: 0;
+			 line-height: 50px;
+			 text-align: center;
+			 /* Starting position */
+			 -moz-transform:translateX(100%);
+			 -webkit-transform:translateX(100%);	
+			 transform:translateX(100%);
+			 /* Apply animation to this element */	
+			 -moz-animation: example1 5s linear infinite;
+			 -webkit-animation: example1 5s linear infinite;
+			 animation: example1 12s linear infinite;
+			}
+			/* Move it (define the animation) */
+			@-moz-keyframes example1 {
+			 0%   { -moz-transform: translateX(100%); }
+			 100% { -moz-transform: translateX(-100%); }
+			}
+			@-webkit-keyframes example1 {
+			 0%   { -webkit-transform: translateX(100%); }
+			 100% { -webkit-transform: translateX(-100%); }
+			}
+			@keyframes example1 {
+			 0%   { 
+			 -moz-transform: translateX(100%); /* Firefox bug fix */
+			 -webkit-transform: translateX(100%); /* Firefox bug fix */
+			 transform: translateX(100%); 		
+			 }
+			 100% { 
+			 -moz-transform: translateX(-100%); /* Firefox bug fix */
+			 -webkit-transform: translateX(-100%); /* Firefox bug fix */
+			 transform: translateX(-100%); 
+			 }
+}
+	</style>
 </head>
 <body>
 <div class="div_tong">
@@ -359,8 +406,9 @@
 		</a>
 		<div class="div_center">
 			<div class="div_center_left">
-				<input class="input1" type="text" name="#" placeholder="Bạn cần tìm gì ..." size="50">
-				<button class="hvr-shutter-in-horizontal" type="submit">Tìm kiếm</button>
+				<div class="example1">
+			<p class="h5" style="font-family: monospace;"><i class="fa fa-globe" aria-hidden="true" style="font-size: 25px;color: #153FF4;"></i>&nbspĐịa chỉ :&nbsp&nbsp<i class="fa fa-map-marker" aria-hidden="true" style="color: red;font-size: 20px;">&nbsp</i>Chung cư CT3 - phường Yên Nghĩa - quận Hà Đông - Hà Nội</p>
+		</div>
 			</div>
 			<div class="div_center_right" >
 				<label>
@@ -414,10 +462,10 @@
 				<a class="the_a" href="#"><span class="span_list" style="line-height: 55px;">Thời Trang Nữ</span><i id="fa_1" class="fa fa-angle-down"></i></a>
 				<ul>
 		          <li>
-		            <a class="the_a" href=""><span class="span_list" style="line-height: 55px;">Áo Sơ Mi Nữ</span></a>
+		            <a class="the_a" href="index.php?module=products&action=shirt_women"><span class="span_list" style="line-height: 55px;">Áo Sơ Mi Nữ</span></a>
 		          </li>
 		          <li>
-		            <a class="the_a" href="#"><span class="span_list" style="line-height: 55px;">Áo Thun</span></a>
+		            <a class="the_a" href="index.php?module=products&action=tshirt_women"><span class="span_list" style="line-height: 55px;">Áo Thun</span></a>
 		          </li>
        		 </ul>
 			</li>
@@ -425,15 +473,14 @@
 				<a class="the_a" href="index.php?module=products&action=product_accessories"><span class="span_list" style="line-height: 55px;">Phụ Kiện </span><i id="fa_1" class="fa fa-angle-down"></i></a>
 				<ul>
 		          <li>
-		            <a class="the_a" href="#"><span class="span_list" style="line-height: 55px;">Phụ Kiện Nam</span></a>
+		            <a class="the_a" href="index.php?module=products&action=accessories_man"><span class="span_list" style="line-height: 55px;">Phụ Kiện Nam</span></a>
 		          </li>
 		          <li>
-		            <a class="the_a" href="#"><span class="span_list" style="line-height: 55px;">Phụ Kiện Nữ</span></a>
+		            <a class="the_a" href="index.php?module=products&action=accessories_women"><span class="span_list" style="line-height: 55px;">Phụ Kiện Nữ</span></a>
 		          </li>
        		 </ul>
 			</li>
 		</ul>
-		
 		</div>
 		<div class="div_form">
 		<form method="POST" onsubmit="return validateForm()">

@@ -36,13 +36,13 @@
 		.div_banner{
 			width: 100%;
 			height: 35%;
-			background: white;
+			background: #C0A0A0;
 			position: relative;
 		}
 		.div_product{
 			width: 100%;
 			height: 47%;
-			background: #ACECF6;
+			background: #92E9F7;
 		}
 		.div_footer{
 			width: 100%;

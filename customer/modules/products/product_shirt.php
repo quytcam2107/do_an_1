@@ -32,6 +32,7 @@ $error ="";
  		width: 1100px;
  		border-spacing: 25px;
  		text-align: center;	
+ 		margin: auto;
  	}
  	
   	.product-shirt_top table .item{

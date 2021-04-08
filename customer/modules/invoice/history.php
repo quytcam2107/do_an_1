@@ -1,4 +1,5 @@
 <?php 
+date_default_timezone_set('Asia/Ho_Chi_Minh');
 	if (!isset($_SESSION['user']['id'])) {
 		header("location:index.php");
 		die();
@@ -20,10 +21,13 @@ require_once 'layout/header.php';
 		text-align: center;
 		border: 1px solid black;
 	}
+	.a_accept{
+		text-decoration: none;
+	}
 </style>
 <?php 
 	$id_customer =$_SESSION['user']['id'];
-	$sql = "SELECT id,create_at,total_money,status,receiver,address,phone FROM invoice WHERE id_customer = '$id_customer'";
+	$sql = "SELECT id,create_at,total_money,status,receiver,address,phone FROM invoice WHERE id_customer = '$id_customer' ORDER BY id DESC";
 	$result = mysqli_query($conn,$sql);
 	if ($result == false) {
 		die("Error :".mysqli_error($conn));
@@ -56,13 +60,16 @@ require_once 'layout/header.php';
 					echo "<br>";
 					echo "Số điện thoại :".$row['phone'];
 					echo "</td>";
-					echo "<td>".$row['create_at']."</td>";
+					// echo "<td>".$row['create_at']."</td>";
+					echo "<td>";
+					echo date_format(date_create($row['create_at']), 'd-m-Y H:i:s');
+					echo "</td>";
 					echo "<td>".$row['total_money']."</td>";
 					echo "<td>";
 						$arrStatus = array(0=> "Chưa duyệt",1=> "Đã duyệt",2=>"Thành công",3=>"Đã huỷ");
 						echo $arrStatus[$row['status']];
 						if ($row['status'] == 0) {
-							echo "<button><a href='index.php?module=invoice&action=cancel&id=$id_invoice'>Huỷ đơn hàng</a></button>";
+							echo "<button><a class='a_accept' href='index.php?module=invoice&action=cancel&id=$id_invoice'>Huỷ đơn hàng</a></button>";
 						}
 					echo "</td>";
 					echo "<tr>";

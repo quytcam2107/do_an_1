@@ -212,20 +212,96 @@
  		<label>
  			Size :
  			<select name="sz">
- 				<?php if ($type == 4 || $type == 8): ?>
+ 				<!-- <?php if ($type == 4 || $type == 8): ?>
  					<option value="28">28</option>
  					<option value="29">29</option>
  					<option value="30">30</option>
  					<option value="31">31</option>
  					<option value="32">32</option>
  				<?php endif ?>
- 				<?php if ($type == 5 || $type == 7): ?>
+ 				<?php if ($type == 5 || $type == 7 || $type == 6): ?>
  					<option value="S">S</option>
  					<option value="M">M</option>
  					<option value="L">L</option>
  					<option value="XL">XL</option>
  					<option value="XXL">XXL</option>
  				<?php endif ?>
+ 				<?php if ($type == 9 || $type == 10): ?>
+ 					<option value="9">Free Size</option>
+ 					
+ 				<?php endif ?> -->
+ 				<?php 
+ 					if ($size ==1) {
+ 						echo "<option>";
+ 							echo "S";
+ 						echo "</option>";
+ 					}
+ 					if ($size ==2) {
+ 						echo "<option>";
+ 							echo "M";
+ 						echo "</option>";
+ 					}
+ 					if ($size ==3) {
+ 						echo "<option>";
+ 							echo "L";
+ 						echo "</option>";
+ 					}
+ 					if ($size ==4) {
+ 						echo "<option>";
+ 							echo "XL";
+ 						echo "</option>";
+ 					}
+ 					if ($size ==5) {
+ 						echo "<option>";
+ 							echo "XXL";
+ 						echo "</option>";
+ 					}
+ 					if ($size ==7) {
+ 						echo "<option>";
+ 							echo "28 -> 32";
+ 						echo "</option>";
+ 					}
+ 					if ($size ==8) {
+ 						echo "<option>";
+ 							echo "S,M,L,XL,XXL";
+ 						echo "</option>";
+ 					}
+ 					if ($size ==9) {
+ 						echo "<option>";
+ 							echo "Free Size";
+ 						echo "</option>";
+ 					}
+ 					if ($size ==10) {
+ 						echo "<option>";
+ 							echo "27";
+ 						echo "</option>";
+ 					}
+ 					if ($size ==11) {
+ 						echo "<option>";
+ 							echo "28";
+ 						echo "</option>";
+ 					}
+ 					if ($size ==12) {
+ 						echo "<option>";
+ 							echo "29";
+ 						echo "</option>";
+ 					}
+ 					if ($size ==13) {
+ 						echo "<option>";
+ 							echo "30";
+ 						echo "</option>";
+ 					}
+ 					if ($size ==14) {
+ 						echo "<option>";
+ 							echo "31";
+ 						echo "</option>";
+ 					}
+ 					if ($size ==15) {
+ 						echo "<option>";
+ 							echo "32";
+ 						echo "</option>";
+ 					}
+ 				 ?>
  			</select>
  		</label>
  		<br><br>
@@ -254,7 +330,7 @@
  			<span style="padding-left: 80px;">
  			
  			<?php 
- 				$arrColor =array(0=>"Đen",1=>"Xanh Dương",2=>"Đỏ",3=>"Vàng",4=>"Nâu",5=>"Cam",6=>"Xanh Lá Cây",7=>"Trắng",8=>"Tím",9=>"Bạc");
+ 				$arrColor =array(0=>"Đen",1=>"Xanh Dương",2=>"Đỏ",3=>"Vàng",4=>"Nâu",5=>"Cam",6=>"Xanh Lá Cây",7=>"Trắng",8=>"Tím",9=>"Bạc",10=>"Hồng",11=>"Ngẫu nhiên");
  				$color = $row['color'];
  				echo $arrColor[$color];
  			 ?>

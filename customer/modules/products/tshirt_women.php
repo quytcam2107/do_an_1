@@ -31,8 +31,9 @@ $error ="";
   	.product-shirt_top table{
  		width: 1100px;
  		margin-left: 120px;
-
+ 		margin: auto;
  		text-align: center;	
+ 		border-spacing: 10px;
  	}
  	
   	.product-shirt_top table .item{
@@ -46,8 +47,8 @@ $error ="";
  		background: #E7FAFA;
  	}
  	img{
- 		width: 210px;
- 		height: 290px;
+ 		width: 180px;
+ 		height: 250px;
 
  	}
  	.sp_item_name{

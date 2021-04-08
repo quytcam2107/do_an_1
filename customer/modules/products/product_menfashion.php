@@ -29,6 +29,8 @@ $error ="";
  		
  	}
   	.product-shirt_top table{
+  		
+  		margin: auto;
  		width: 1100px;
  		border-spacing: 10px;
  		text-align: center;	
@@ -101,7 +103,7 @@ $error ="";
  								$url = $row2['url'];
  								echo "<img src='$url'>";
  								echo "<br>";
- 								echo "<span class='sp_item_price'>".$row['price']."</span>"." VND";
+ 								echo "<span class='sp_item_price'>".number_format($row['price'],0,'','.')."</span>"."  VND";
  								echo "</a>";
  							echo "</td>";
  							

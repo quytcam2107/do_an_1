@@ -464,7 +464,52 @@ background-size: 300px 100px;
 
 		}
 		</style>
-
+		<style type="text/css">
+			.example1 {
+			 height: 50px;	
+			 overflow: hidden;
+			 position: relative;
+			}
+			.example1 .h5 {
+			 font-size: 20px;
+			 color: #CD3261;
+			 position: absolute;
+			 width: 100%;
+			 height: 100%;
+			 margin: 0;
+			 line-height: 50px;
+			 text-align: center;
+			 /* Starting position */
+			 -moz-transform:translateX(100%);
+			 -webkit-transform:translateX(100%);	
+			 transform:translateX(100%);
+			 /* Apply animation to this element */	
+			 -moz-animation: example1 5s linear infinite;
+			 -webkit-animation: example1 5s linear infinite;
+			 animation: example1 12s linear infinite;
+			}
+			/* Move it (define the animation) */
+			@-moz-keyframes example1 {
+			 0%   { -moz-transform: translateX(100%); }
+			 100% { -moz-transform: translateX(-100%); }
+			}
+			@-webkit-keyframes example1 {
+			 0%   { -webkit-transform: translateX(100%); }
+			 100% { -webkit-transform: translateX(-100%); }
+			}
+			@keyframes example1 {
+			 0%   { 
+			 -moz-transform: translateX(100%); /* Firefox bug fix */
+			 -webkit-transform: translateX(100%); /* Firefox bug fix */
+			 transform: translateX(100%); 		
+			 }
+			 100% { 
+			 -moz-transform: translateX(-100%); /* Firefox bug fix */
+			 -webkit-transform: translateX(-100%); /* Firefox bug fix */
+			 transform: translateX(-100%); 
+			 }
+}
+		</style>
 </head>
 <body>
 <div class="div_tong">
@@ -475,11 +520,10 @@ background-size: 300px 100px;
 			</div>
 		</a>
 		<div class="div_center" >
-			<input class="input1" type="text" name="#" placeholder="Bạn cần tìm gì ..." size="50">	
-			 <form method="POST">
-			 	<button name="btn" class="hvr-shutter-in-horizontal" type="submit" >Tìm kiếm</button>
-			 </form>	
+			<div class="example1">
+			<p style="font-family: monospace;" class="h5"><i class="fa fa-globe" aria-hidden="true" style="font-size: 25px;color: #153FF4;"></i>&nbspĐịa chỉ :&nbsp&nbsp<i class="fa fa-map-marker" aria-hidden="true" style="color: red;font-size: 20px;">&nbsp</i>Chung cư CT3 - phường Yên Nghĩa - quận Hà Đông - Hà Nội</p>
 		</div>
+	</div>
 		<div class="div_right">
 			<ul id="ul_first">
 				<li class="li_top" id="li_1">
@@ -510,7 +554,7 @@ background-size: 300px 100px;
 						echo "<a style='text-decoration-line: none;' href='profile'>"."<span class='sp_name_1'>".'<i class="fa fa-user-circle-o user"></i>'.''.'&nbsp'.$_SESSION['user']['name']."</span>"."</a>";
 						echo "<ul class='ul_top_1'>";
 							echo "<li class='li_top_1'>";
-								echo "<a style='text-decoration-line: none;' style href='change_profile'>Thay đổi thông tin</a>";
+								echo "<a style='text-decoration-line: none;' style href='index.php?module=common&action=change_profile'>Thay đổi thông tin</a>";
 							echo "</li>";
 						echo "</ul>";
 				}
@@ -534,7 +578,7 @@ background-size: 300px 100px;
 				<a class="the_a" href="index.php?module=home&action=home"><span class="span_list" style="line-height: 55px;">Trang Chủ</span></a>
 			</li>
 			
-	      <li class="<?php if($action == "product_trousers") echo "active" ?>">
+	      <li class="<?php if($action == "product_menfashion" || $action == "shirt" ||$action == "coat") echo "active" ?>">
 	      		<a class="the_a" href="#"><span class="span_list" style="line-height: 55px;">Thời Trang Nam</span><i id="fa_1" class="fa fa-angle-down"></i></a>	
         <ul>
           <li>
@@ -548,7 +592,7 @@ background-size: 300px 100px;
           </li>
         </ul>
       </li>
-      		<li  class="<?php if($action == "product_shirt") echo "active" ?>">
+      		<li  class="<?php if($action == "shirt_women" || $action == "tshirt_women") echo "active" ?>">
 				<a class="the_a" href="#"><span class="span_list" style="line-height: 55px;">Thời Trang Nữ</span><i id="fa_1" class="fa fa-angle-down"></i></a>
 				<ul>
 		          <li>
@@ -559,14 +603,15 @@ background-size: 300px 100px;
 		          </li>
        		 </ul>
 			</li>
-		<li>
-				<a class="the_a" href="index.php?module=products&action=product_accessories"><span class="span_list" style="line-height: 55px;">Phụ Kiện </span><i id="fa_1" class="fa fa-angle-down"></i></a>
+		<li  class="<?php if($action == "accessories_man" || $action == "accessories_women") echo "active" ?>">
+
+				<a class="the_a" href=""><span class="span_list" style="line-height: 55px;">Phụ Kiện </span><i id="fa_1" class="fa fa-angle-down"></i></a>
 				<ul>
 		          <li>
-		            <a class="the_a" href="#"><span class="span_list" style="line-height: 55px;">Phụ Kiện Nam</span></a>
+		            <a class="the_a" href="index.php?module=products&action=accessories_man"><span class="span_list" style="line-height: 55px;">Phụ Kiện Nam</span></a>
 		          </li>
 		          <li>
-		            <a class="the_a" href="#"><span class="span_list" style="line-height: 55px;">Phụ Kiện Nữ</span></a>
+		            <a class="the_a" href="index.php?module=products&action=accessories_women"><span class="span_list" style="line-height: 55px;">Phụ Kiện Nữ</span></a>
 		          </li>
        		 </ul>
 			</li>
